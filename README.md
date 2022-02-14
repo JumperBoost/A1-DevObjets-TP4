@@ -50,7 +50,7 @@ voici le principe général de fonctionnement :
 
 Un squelette du code vous est fourni avec quelques classes de tests unitaires. Prenez le temps de le lire et de le comprendre car vous aurez à le compléter en y ajoutant des méthodes et des attributs qui vous paraissent nécessaires. Discutez avec votre enseignant avant de démarrer le travail.
 
-1. Quelque chose a été oublié dans la classe `Produit` : comme indiqué précédemment, le pas d'enchère doit être systématiquement le même pour tous les produits, mais modifiable par l'utilisateur. Changez la déclaration de cet attribut afin de satisfaire cette contrainte. Doit-on modifier également la méthode `void setPasEnchere()` ? Justifiez.
+1. Quelque chose a été oublié dans la classe `Produit` : comme indiqué précédemment, le pas d'enchère doit être systématiquement le même pour tous les produits, mais modifiable par l'utilisateur. Changez la déclaration de cet attribut afin de satisfaire cette contrainte. Doit-on modifier également les méthodes `void setPasEnchere()` et `int getPasEnchere()` ? Justifiez.
 
    **Remarque** : ne pas confondre la notion d'_utilisateur du logiciel_ (non-informaticien) et l'_utilisateur-programmeur_ qui est censé se servir de votre application pour poursuivre son développement, pour sa maintenance, le débuggage etc. Dans ce cours l'utilisateur c'est l'informaticien.
 
@@ -70,6 +70,7 @@ Un squelette du code vous est fourni avec quelques classes de tests unitaires. P
 1. Le prix en cours d'un produit est défini au départ (lorsque le produit n'a reçu aucune offre d'enchère) comme son prix initial. Ensuite le prix en cours va correspondre à celui de l'enchère gagnante actuelle. Implémentez la méthode `int getPrixEnCours()` de la classe `Produit` qui retourne le prix en cours du produit.
 
 Étant donné un produit (ayant un prix en cours **c**) recevant une offre **o** (de prix courant **p<sub>o</sub>**, peu importe son prix maximal), on dit que **o** est **correcte** pour le produit si toutes les conditions suivantes sont respectées :
+
 * le produit est ouvert aux enchères
 * le produit de l'offre **o** est bien le même que le produit courant qui reçoit **o**
 * si **o** est la première offre, alors il faut que **p<sub>o</sub>**  &ge; **c**
