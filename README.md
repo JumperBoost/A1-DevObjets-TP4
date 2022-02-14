@@ -67,7 +67,7 @@ Un squelette du code vous est fourni avec quelques classes de tests unitaires. P
     * stocker toutes les offres émises sur ce produit -- on vous conseille d'utiliser une structure de données de type liste prédéfinie en _Java_, comme `java.util.ArrayList` ou `java.util.LinkedList`, mais vous êtes libres d'utiliser d'autres solutions ;
     * stocker l'offre gagnante actuelle
 
-1. Le prix en cours d'un produit est défini au départ (lorsque le produit n'a reçu aucune offre d'enchère) comme son prix initial. Ensuite le prix en cours va correspondre à celui de l'enchère gagnante actuelle. Implémentez la méthode `double getPrixEnCours()` de la classe `Produit` qui retourne le prix en cours du produit.
+1. Le prix en cours d'un produit est défini au départ (lorsque le produit n'a reçu aucune offre d'enchère) comme son prix initial. Ensuite le prix en cours va correspondre à celui de l'enchère gagnante actuelle. Implémentez la méthode `int getPrixEnCours()` de la classe `Produit` qui retourne le prix en cours du produit.
 
 Étant donné un produit (ayant un prix en cours **c**) recevant une offre **o** (de prix courant **p<sub>o</sub>**, peu importe son prix maximal), on dit que **o** est **correcte** pour le produit si toutes les conditions suivantes sont respectées :
 * le produit est ouvert aux enchères
@@ -84,7 +84,7 @@ on dit que **o** est **valide** si toutes les conditions suivantes sont respect�
 * **M<sub>o</sub>** &ge; **p<sub>o</sub>**
 * **o** est une offre correcte pour le produit
 
-7. Écrivez le code de la méthode `public OffreEnchere creerOffre(Produit produit, double prixCourant, double prixMax)` de la classe `Compte` qui, à partir de ses paramètres, instancie et retourne une offre si celle-ci est **valide**. Également, si l'offre est valide, la méthode devra débiter le compte de `prixMax` + le coût de participation du produit. La méthode doit retourner `null` si l'offre n'est pas valide.
+7. Écrivez le code de la méthode `public OffreEnchere creerOffre(Produit produit, int prixCourant, int prixMax)` de la classe `Compte` qui, à partir de ses paramètres, instancie et retourne une offre si celle-ci est **valide**. Également, si l'offre est valide, la méthode devra débiter le compte de `prixMax` + le coût de participation du produit. La méthode doit retourner `null` si l'offre n'est pas valide.
 
 Passons maintenant à la gestion des coûts liés à la création d'offres. Comme vous l'avez remarqué dans la question précédente, dès qu'un compte
 créé une offre valide, alors le compte est directement débité de **M<sub>o</sub>**+**c<sub>p</sub>**. L'idée derrière ce débit immédiat est de s'assurer qu'un compte
