@@ -19,7 +19,7 @@ public class Compte {
         return solde;
     }
 
-    public OffreEnchere creerOffre(Produit produit, double prix, double prixMax) {
+    public OffreEnchere creerOffre(Produit produit, int prix, int prixMax) {
         throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
     }
 }
