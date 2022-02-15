@@ -88,9 +88,9 @@ on dit que **o** est **valide** si toutes les conditions suivantes sont respect�
 7. Écrivez le code de la méthode `public OffreEnchere creerOffre(Produit produit, int prixCourant, int prixMax)` de la classe `Compte` qui, à partir de ses paramètres, instancie et retourne une offre si celle-ci est **valide**. Également, si l'offre est valide, la méthode devra débiter le compte de `prixMax` + le coût de participation du produit. La méthode doit retourner `null` si l'offre n'est pas valide.
 
 Passons maintenant à la gestion des coûts liés à la création d'offres. Comme vous l'avez remarqué dans la question précédente, dès qu'un compte
-créé une offre valide, alors le compte est directement débité de **M<sub>o</sub>**+**c<sub>p</sub>**. L'idée derrière ce débit immédiat est de s'assurer qu'un compte
+crée une offre valide, alors le compte est directement débité de **M<sub>o</sub>**+**c<sub>p</sub>**. L'idée derrière ce débit immédiat est de s'assurer qu'un compte
 qui proposerait des offres sur de nombreux produits en parallèle aurait de quoi toutes les payer s'il était vainqueur sur tous ces produits.
-Par conséquent, si une offre s'avère perdante, alors il faut rembourser **M<sub>o</sub>** sur le compte correspondant (sinon, c'est du vol !). En revanche, si l'offre est déclarée gagnante, alors il faut rembourser la différence entre **M<sub>o</sub>** est le prix du produit au moment de la clôture de l'enchère.
+Par conséquent, si une offre s'avère perdante, alors il faut rembourser **M<sub>o</sub>** sur le compte correspondant (sinon, c'est du vol !). En revanche, si l'offre est déclarée gagnante, alors il faut rembourser la différence entre **M<sub>o</sub>** et le prix du produit au moment de la clôture de l'enchère.
 
 8. Implémentez la méthode `setEtatGagnant(boolean etat)` de la classe `OffreEnchere`. On utilisera cette méthode pour faire basculer une enchère à un état (gagnante ou perdante). Elle effectuera le bon remboursement du compte en cas de passage à l'état perdant.
 
