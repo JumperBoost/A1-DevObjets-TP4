@@ -7,12 +7,12 @@
 * [**Support de cours**](https://gitlabinfo.iutmontp.univ-montp2.fr/dev-objets/Ressources)
 * **Enseignants:**
   [Marin Bougeret](mailto:marin.bougeret@umontpellier.fr),
-  [Gaëlle Hisler](mailto:gaelle.hisler@umontpellier.fr),<!--[Sophie Nabitz](mailto:sophie.nabitz@univ-avignon.fr),-->
+  [Romain Lebreton](mailto:romain.lebreton@umontpellier.fr),<!--[Sophie Nabitz](mailto:sophie.nabitz@univ-avignon.fr),-->
   [Cyrille Nadal](mailto:cyrille.nadal@umontpellier.fr),
   [Victor Poupet](mailto:victor.poupet@umontpellier.fr),
   [Gilles Trombettoni](mailto:gilles.trombettoni@umontpellier.fr),
   [Petru Valicov](mailto:petru.valicov@umontpellier.fr)
-* Le [forum Piazza](https://piazza.com/class/kyo4oooauez252) de ce cours pour poser vos questions
+* Le [forum Piazza](https://piazza.com/class/ld2tzi5k82via) de ce cours pour poser vos questions
 * [Email](mailto:petru.valicov@umontpellier.fr) pour une question d'ordre privée concernant le cours.
 * Le [sujet du TP](https://www.lirmm.fr/~pvalicov/Cours/dev-objets/TP4.pdf) en format .pdf téléchargeable et imprimable.
 
