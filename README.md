@@ -80,7 +80,7 @@ Un squelette du code vous est fourni avec quelques classes de tests unitaires. P
 * si **o** est la première offre, alors il faut que **p<sub>o</sub>**  &ge; **c**
 * si **o** n'est pas la première offre (dans ce cas **c** correspond au prix courant de l'offre actuellement gagnante), alors il faut que **p<sub>o</sub>  &ge; c + &delta;**, où **&delta;** est le pas d'enchère.
 
-6. Implémentez la méthode `boolean verifierOffre(OffreEnchere offre)` de la classe `Produit`, qui vérifie si une offre est correcte.
+7. Implémentez la méthode `boolean verifierOffre(OffreEnchere offre)` de la classe `Produit`, qui vérifie si une offre est correcte.
 
 Étant donné un compte (ayant un solde **s**), et une offre **o** (de prix courant **p<sub>o</sub>** et maximum **M<sub>o</sub>**)  pour un produit (de coût de participation **c<sub>p</sub>**),
 on dit que **o** est **valide** si toutes les conditions suivantes sont respectées :
@@ -89,14 +89,14 @@ on dit que **o** est **valide** si toutes les conditions suivantes sont respect�
 * **M<sub>o</sub>** &ge; **p<sub>o</sub>**
 * **o** est une offre correcte pour le produit
 
-7. Écrivez le code de la méthode `public OffreEnchere creerOffre(Produit produit, int prixCourant, int prixMax)` de la classe `Compte` qui, à partir de ses paramètres, instancie et retourne une offre si celle-ci est **valide**. Également, si l'offre est valide, la méthode devra débiter le compte de `prixMax` + le coût de participation du produit. La méthode doit retourner `null` si l'offre n'est pas valide.
+8. Écrivez le code de la méthode `public OffreEnchere creerOffre(Produit produit, int prixCourant, int prixMax)` de la classe `Compte` qui, à partir de ses paramètres, instancie et retourne une offre si celle-ci est **valide**. Également, si l'offre est valide, la méthode devra débiter le compte de `prixMax` + le coût de participation du produit. La méthode doit retourner `null` si l'offre n'est pas valide.
 
 Passons maintenant à la gestion des coûts liés à la création d'offres. Comme vous l'avez remarqué dans la question précédente, dès qu'un compte
 crée une offre valide, alors le compte est directement débité de **M<sub>o</sub>**+**c<sub>p</sub>**. L'idée derrière ce débit immédiat est de s'assurer qu'un compte
 qui proposerait des offres sur de nombreux produits en parallèle aurait de quoi toutes les payer s'il était vainqueur sur tous ces produits.
 Par conséquent, si une offre s'avère perdante, alors il faut rembourser **M<sub>o</sub>** sur le compte correspondant (sinon, c'est du vol !). En revanche, si l'offre est déclarée gagnante, alors il faut rembourser la différence entre **M<sub>o</sub>** et le prix du produit au moment de la clôture de l'enchère.
 
-8. Implémentez la méthode `setEtatGagnant(boolean etat)` de la classe `OffreEnchere`. On utilisera cette méthode pour faire basculer une enchère à un état (gagnante ou perdante). Elle effectuera le bon remboursement du compte en cas de passage à l'état perdant.
+9. Implémentez la méthode `setEtatGagnant(boolean etat)` de la classe `OffreEnchere`. On utilisera cette méthode pour faire basculer une enchère à un état (gagnante ou perdante). Elle effectuera le bon remboursement du compte en cas de passage à l'état perdant.
 
 Nous allons maintenant implémenter la méthode la plus importante, qui va gérer la concurrence entre plusieurs offres valides pour un produit fixé.
 Voici les règles permettant de déterminer si une nouvelle offre valide est gagnante ou non, et de fixer la nouvelle valeur du prix courant.
@@ -111,7 +111,7 @@ Considérons un produit. Quand une nouvelle offre (supposée valide) **o2** (de 
 On remarque qu'un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère. Par exemple, il pourra le faire si son offre a été "battue" par un autre enchérisseur.
 
 
-9. Implémentez la méthode `void ajouterOffre(OffreEnchere o)` de la classe `Produit` qui, étant donnée une nouvelle offre `o` (supposée valide, et pour le même produit), effectue les actions suivantes :
+10. Implémentez la méthode `void ajouterOffre(OffreEnchere o)` de la classe `Produit` qui, étant donnée une nouvelle offre `o` (supposée valide, et pour le même produit), effectue les actions suivantes :
     * ajoute `o` à la liste d'offres d'enchères du produit ;
     * met à jour l'offre gagnante actuelle sur le produit (en déterminant si `o` est gagnante ou non, selon les règles ci-dessus) ;
     * change correctement l'état des offres en concurrence en "gagnante" ou "perdante", tout en déclenchant le remboursement du compte perdant (utiliser la méthode `setEtatGagnant(boolean etat)`).
