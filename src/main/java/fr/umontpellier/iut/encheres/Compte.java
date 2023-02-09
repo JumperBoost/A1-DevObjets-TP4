@@ -19,6 +19,12 @@ public class Compte {
         return solde;
     }
 
+    /**
+     * Renvoie une offre pour le produit passé en paramètres avec un prix de base et
+     * un prix maximal à ne pas dépasser
+     *
+     * @return l'offre d'enchère correspondante ou null si la création n'a pas pu avoir lieu
+     */
     public OffreEnchere creerOffre(Produit produit, int prix, int prixMax) {
         throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
     }
