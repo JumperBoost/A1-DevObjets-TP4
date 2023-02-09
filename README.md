@@ -89,7 +89,7 @@ on dit que **o** est **valide** si toutes les conditions suivantes sont respect�
 * **M<sub>o</sub>** &ge; **p<sub>o</sub>**
 * **o** est une offre correcte pour le produit
 
-8. Écrivez le code de la méthode `public OffreEnchere creerOffre(Produit produit, int prixCourant, int prixMax)` de la classe `Compte` qui, à partir de ses paramètres, instancie et retourne une offre si celle-ci est **valide**. Également, si l'offre est valide, la méthode devra débiter le compte de `prixMax` + le coût de participation du produit. La méthode doit retourner `null` si l'offre n'est pas valide.
+8. Écrivez le code de la méthode `public OffreEnchere creerOffre(Produit produit, int prix, int prixMax)` de la classe `Compte` qui, à partir de ses paramètres, instancie et retourne une offre si celle-ci est **valide**. Également, si l'offre est valide, la méthode devra débiter le compte de `prixMax` + le coût de participation du produit. Enfin, l'offre valide devra être stockée dans la liste des enchères du compte. La méthode doit retourner `null` si l'offre n'est pas valide.
 
 Passons maintenant à la gestion des coûts liés à la création d'offres. Comme vous l'avez remarqué dans la question précédente, dès qu'un compte
 crée une offre valide, alors le compte est directement débité de **M<sub>o</sub>**+**c<sub>p</sub>**. L'idée derrière ce débit immédiat est de s'assurer qu'un compte
@@ -120,7 +120,7 @@ On remarque qu'un utilisateur peut déposer une nouvelle offre d'enchère sur le
 
    **Remarque :** vous pouvez ajouter des méthodes auxiliaires qui vous paraissent nécessaires.
 
-11. Implémentez la méthode réciproque `void arreterEnchere()`, qui rendra l'objet indisponible et invoquera le remboursement du compte lié à l'offre gagnante `o` de **M<sub>o</sub>** - **c**, où **c** est le prix courant de l'objet (qui correspond donc au prix auquel l'objet va partir au moment de la clôture). À la fin de cette fonction, le compte de l'offre gagnante devra avoir le bon solde et le produit remporté dans sa liste `produitsAchetés`.
+11. Implémentez la méthode `void arreterEnchere()`, qui rendra l'objet indisponible et invoquera le remboursement du compte lié à l'offre gagnante `o` de **M<sub>o</sub>** - **c**, où **c** est le prix courant de l'objet (qui correspond donc au prix auquel l'objet va partir au moment de la clôture). À la fin de cette fonction, le compte de l'offre gagnante devra avoir le bon solde et le produit remporté dans sa liste `produitsAchetés`.
 
     **Remarque** : pour réaliser cette fonction, vous serez certainement amenés à ajouter des nouvelles méthodes (ou attributs) dans certaines classes ; c'est à vous de décider ce qui est le mieux pour votre application. Vous pouvez en discuter avec votre enseignant.
 

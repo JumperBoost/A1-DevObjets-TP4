@@ -21,7 +21,8 @@ public class Compte {
 
     /**
      * Renvoie une offre pour le produit passé en paramètres avec un prix de base et
-     * un prix maximal à ne pas dépasser
+     * un prix maximal à ne pas dépasser. Si la création a pu avoir lieur, l'offre est
+     * ajoutée à la liste des enchères du compte.
      *
      * @return l'offre d'enchère correspondante ou null si la création n'a pas pu avoir lieu
      */
