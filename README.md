@@ -50,6 +50,8 @@ voici le principe général de fonctionnement :
 
 Un squelette du code vous est fourni avec quelques classes de tests unitaires. Prenez le temps de le lire et de le comprendre, car vous aurez à le compléter en y ajoutant des méthodes et des attributs qui vous paraissent nécessaires. Discutez avec votre enseignant avant de démarrer le travail.
 
+1. Implémentez la méthode `void demarrerEnchere()` de `Produit` pour qu'elle rende l'objet disponible.
+
 1. Quelque chose a été oublié dans la classe `Produit` : comme indiqué précédemment, le pas d'enchère doit être systématiquement le même pour tous les produits, mais modifiable par l'utilisateur. Changez la déclaration de cet attribut afin de satisfaire cette contrainte. Doit-on modifier également les méthodes `void setPasEnchere()` et `int getPasEnchere()` ? Justifiez.
 
    **Remarque** : ne pas confondre la notion d'_utilisateur du logiciel_ (non-informaticien) et l'_utilisateur-programmeur_ qui est censé se servir de votre application pour poursuivre son développement, pour sa maintenance, le débuggage etc. Dans ce cours l'utilisateur c'est l'informaticien.
@@ -65,8 +67,9 @@ Un squelette du code vous est fourni avec quelques classes de tests unitaires. P
 1. Dans la classe `Produit`, ajoutez des attributs permettant respectivement de
 
     * stocker toutes les offres émises sur ce produit -- on vous conseille d'utiliser une structure de données de type liste prédéfinie en _Java_, comme `java.util.ArrayList` ou `java.util.LinkedList`, mais vous êtes libres d'utiliser d'autres solutions ;
-    * stocker l'offre gagnante actuelle
-    * compléter la méthode `getOffreGagnante()`
+    * stocker l'offre gagnante actuelle.
+
+   Complétez la méthode `getOffreGagnante()`.
 
 1. Au départ, lorsque le produit n'a reçu aucune offre d'enchère, son prix actuel correspond à son prix initial. Ensuite, le prix actuel va correspondre au prix en cours de l'enchère gagnante actuelle. Implémentez la méthode `int getPrixActuel()` de la classe `Produit`.
 
@@ -116,8 +119,6 @@ On remarque qu'un utilisateur peut déposer une nouvelle offre d'enchère sur le
    **Remarque :** nul besoin de vérifier ici si l'offre est valide, à l'utilisation de la méthode `void ajouterOffre(OffreEnchere o)` on suppose l'objet `o` comme étant valide.
 
    **Remarque :** vous pouvez ajouter des méthodes auxiliaires qui vous paraissent nécessaires.
-
-10. Implémentez la méthode `void demarrerEnchere()` de `Produit` pour qu'elle rende l'objet disponible.
 
 11. Implémentez la méthode réciproque `void arreterEnchere()`, qui rendra l'objet indisponible et invoquera le remboursement du compte lié à l'offre gagnante `o` de **M<sub>o</sub>** - **c**, où **c** est le prix courant de l'objet (qui correspond donc au prix auquel l'objet va partir au moment de la clôture). À la fin de cette fonction, le compte de l'offre gagnante devra avoir le bon solde et le produit remporté dans sa liste `produitsAchetés`.
 

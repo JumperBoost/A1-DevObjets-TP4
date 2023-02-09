@@ -23,12 +23,12 @@ public class Produit {
         return numero;
     }
 
-    // question 1
+    // question 2
     public int getPasEnchere() {
         return pasEnchere;
     }
 
-    // question 1
+    // question 2
     public void setPasEnchere(int pas) {
         pasEnchere = pas;
     }
