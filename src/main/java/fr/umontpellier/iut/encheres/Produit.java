@@ -42,7 +42,7 @@ public class Produit {
     }
 
     // question 5
-    public int getPrixEnCours(){
+    public int getPrixActuel(){
         throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
     }
 
