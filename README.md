@@ -116,7 +116,7 @@ On remarque qu'un utilisateur peut déposer une nouvelle offre d'enchère sur le
     * met à jour l'offre gagnante actuelle sur le produit (en déterminant si `o` est gagnante ou non, selon les règles ci-dessus) ;
     * change correctement l'état des offres en concurrence en "gagnante" ou "perdante", tout en déclenchant le remboursement du compte perdant (utiliser la méthode `setEtatGagnant(boolean etat)`).
 
-   **Remarque :** nul besoin de vérifier ici si l'offre est valide, à l'utilisation de la méthode `void ajouterOffre(OffreEnchere o)` on suppose l'objet `o` comme étant valide.
+   **Remarque :** nul besoin de vérifier ici si l'offre est valide, à l'utilisation de la méthode `void ajouterOffre(OffreEnchere o)` on suppose l'offre `o` comme étant valide.
 
    **Remarque :** vous pouvez ajouter des méthodes auxiliaires qui vous paraissent nécessaires.
 
