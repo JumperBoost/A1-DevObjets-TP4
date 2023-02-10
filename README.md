@@ -112,7 +112,7 @@ Considérons un produit. Quand une nouvelle offre (supposée valide) **o2** (de 
 * si aucune enchère n'a encore été déposée sur ce produit, alors la nouvelle offre est désignée comme gagnante
 
 
-On rappelle qu'un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère. Par exemple, il pourra le faire si son offre a été "battue" par un autre enchérisseur. Ou encore s'il est dans le cas de la situation décrite dans la [Remarque de la question 7](#remGagnantActuel).
+On rappelle qu'un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère. Par exemple, il pourra le faire si son offre a été "battue" par un autre enchérisseur. Ou encore s'il est dans le cas de la situation décrite dans la [Remarque précédant question 8](#remGagnantActuel).
 
 10. Supposons que pour un produit fixé, on ait une première offre **o1=(10,20)** (la notation signifie que **p<sub>o1</sub>=10** et **M<sub>o1</sub>=20**), avec un pas d'enchère de **2**. Imaginons que les offres ci-dessous sont ensuite, faites pour ce produit :
     * **o2=(11,25)**
