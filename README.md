@@ -48,13 +48,13 @@ voici le principe général de fonctionnement :
 * pour éviter des enchères inutiles (de 1 centime par exemple), le même pas d’enchère minimal est défini pour tous les produits vendus via **iBaille**;
 * afin d'éviter aux utilisateurs de devoir enchérir de nombreuses fois (lors d'un "duel" entre deux utilisateurs par exemple), lorsqu'un utilisateur propose un prix pour un produit, il propose également un prix maximal qu'il est prêt à débourser en cas d'enchère concurrente. Le détail de la détermination du gagnant et du prix final du produit seront donnés ci-dessous.
 
-Un squelette du code vous est fourni avec quelques classes de tests unitaires. Prenez le temps de le lire et de le comprendre, car vous aurez à le compléter en y ajoutant des méthodes et des attributs qui vous paraissent nécessaires. Discutez avec votre enseignant avant de démarrer le travail.
+Un squelette du code vous est fourni avec quelques classes de tests unitaires. Prenez le temps de le lire et de le comprendre car vous aurez à le compléter en y ajoutant des méthodes et des attributs qui vous paraissent nécessaires. Discutez avec votre enseignant avant de démarrer le travail.
 
 1. Implémentez la méthode `void demarrerEnchere()` de `Produit` pour qu'elle rende l'objet disponible.
 
 1. Quelque chose a été oublié dans la classe `Produit` : comme indiqué précédemment, le pas d'enchère doit être systématiquement le même pour tous les produits, mais modifiable par l'utilisateur. Changez la déclaration de cet attribut afin de satisfaire cette contrainte. Doit-on modifier également les méthodes `void setPasEnchere()` et `int getPasEnchere()` ? Justifiez.
 
-   **Remarque** : ne pas confondre la notion d'_utilisateur du logiciel_ (non-informaticien) et l'_utilisateur-programmeur_ qui est censé se servir de votre application pour poursuivre son développement, pour sa maintenance, le débuggage etc. Dans ce cours l'utilisateur c'est l'informaticien.
+   **Remarque** : ne pas confondre la notion d'_utilisateur du logiciel_ (non-informaticien) et l'_utilisateur-programmeur_ qui est censé se servir de votre application pour poursuivre son développement, pour sa maintenance, le débuggage, etc. Dans ce cours l'utilisateur, c'est l'informaticien.
 
 1. Complétez la classe `Compte` en y ajoutant une méthode qui permet de créditer le compte avec une somme donnée. Cette somme pourra éventuellement être négative, ce qui permettra alors de retirer de l'argent du compte.
 
@@ -82,14 +82,18 @@ Un squelette du code vous est fourni avec quelques classes de tests unitaires. P
 
 7. Implémentez la méthode `boolean verifierOffre(OffreEnchere offre)` de la classe `Produit`, qui vérifie si une offre est correcte.
 
-Étant donné un compte (ayant un solde **s**), et une offre **o** (de prix courant **p<sub>o</sub>** et maximum **M<sub>o</sub>**)  pour un produit (de coût de participation **c<sub>p</sub>**),
-on dit que **o** est **valide** si toutes les conditions suivantes sont respectées :
+Soient un compte **toto** (ayant un solde **s**), proposant une offre **o** (de prix courant **p<sub>o</sub>** et maximum **M<sub>o</sub>**) pour un produit (de coût de participation **c<sub>p</sub>**). On dit que **o** est **valide** si toutes les conditions suivantes sont respectées :
 
-*  **s**  &ge; **M<sub>o</sub>** + **c<sub>p</sub>**
+* **s**  &ge; **M<sub>o</sub>** + **c<sub>p</sub>** si **toto** n'est pas le gagnant actuel
+* **s** - **M<sub>g</sub>**  &ge; **M<sub>o</sub>** + **c<sub>p</sub>** si **toto** est le gagnant actuel et **M<sub>g</sub>** est le prix maximal de l'offre gagnante actuelle (voir [Remarque ci-dessous](#remGagnantActuel))
 * **M<sub>o</sub>** &ge; **p<sub>o</sub>**
 * **o** est une offre correcte pour le produit
 
+  <a name="remGagnantActuel"></a> **Remarque :**
+  Il se peut qu'un utilisateur détenant l'offre gagnante actuelle du produit, souhaite enchérir une nouvelle fois. Par exemple, cela peut arriver sur un coup de stress : la crainte de perdre devient trop forte ! C'est pour ce cas précis que l'inégalité
+
 8. Écrivez le code de la méthode `public OffreEnchere creerOffre(Produit produit, int prix, int prixMax)` de la classe `Compte` qui, à partir de ses paramètres, instancie et retourne une offre si celle-ci est **valide**. Également, si l'offre est valide, la méthode devra débiter le compte de `prixMax` + le coût de participation du produit. Enfin, l'offre valide devra être stockée dans la liste des enchères du compte. La méthode doit retourner `null` si l'offre n'est pas valide.
+
 
 Passons maintenant à la gestion des coûts liés à la création d'offres. Comme vous l'avez remarqué dans la question précédente, dès qu'un compte
 crée une offre valide, alors le compte est directement débité de **M<sub>o</sub>**+**c<sub>p</sub>**. L'idée derrière ce débit immédiat est de s'assurer qu'un compte
@@ -108,31 +112,39 @@ Considérons un produit. Quand une nouvelle offre (supposée valide) **o2** (de 
 * si aucune enchère n'a encore été déposée sur ce produit, alors la nouvelle offre est désignée comme gagnante
 
 
-On remarque qu'un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère. Par exemple, il pourra le faire si son offre a été "battue" par un autre enchérisseur.
+On rappelle qu'un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère. Par exemple, il pourra le faire si son offre a été "battue" par un autre enchérisseur. Ou encore s'il est dans le cas de la situation décrite dans la [Remarque de la question 7](#remGagnantActuel).
 
+10. Supposons que pour un produit fixé, on ait une première offre **o1=(10,20)** (la notation signifie que **p<sub>o1</sub>=10** et **M<sub>o1</sub>=20**), avec un pas d'enchère de **2**. Imaginons que les offres ci-dessous sont ensuite, faites pour ce produit :
+    * **o2=(11,25)**
+    * **o3=(12,15)**
+    * **o4=(16,30)**
+    * **o5=(25,30)**
+    * **o6=(27,35)**
 
-10. Implémentez la méthode `void ajouterOffre(OffreEnchere o)` de la classe `Produit` qui, étant donnée une nouvelle offre `o` (supposée valide, et pour le même produit), effectue les actions suivantes :
+    Indiquez (sur papier) après chaque offre quelle est l'offre actuellement gagnante, ainsi que le prix courant de l'objet.
+
+11. Implémentez la méthode `void ajouterOffre(OffreEnchere o)` de la classe `Produit` qui, étant donné une nouvelle offre `o` (supposée valide, et pour le même produit), effectue les actions suivantes :
     * ajoute `o` à la liste d'offres d'enchères du produit ;
     * met à jour l'offre gagnante actuelle sur le produit (en déterminant si `o` est gagnante ou non, selon les règles ci-dessus) ;
     * change correctement l'état des offres en concurrence en "gagnante" ou "perdante", tout en déclenchant le remboursement du compte perdant (utiliser la méthode `setEtatGagnant(boolean etat)`).
 
-   **Remarque :** nul besoin de vérifier ici si l'offre est valide, à l'utilisation de la méthode `void ajouterOffre(OffreEnchere o)` on suppose l'offre `o` comme étant valide.
+**Remarque :** nul besoin de vérifier ici si l'offre est valide, à l'utilisation de la méthode `void ajouterOffre(OffreEnchere o)` on suppose l'offre  `o` comme étant valide.
 
-   **Remarque :** vous pouvez ajouter des méthodes auxiliaires qui vous paraissent nécessaires.
+**Remarque :** vous pouvez ajouter des méthodes auxiliaires qui vous paraissent nécessaires.
 
-11. Implémentez la méthode `void arreterEnchere()`, qui rendra l'objet indisponible et invoquera le remboursement du compte lié à l'offre gagnante `o` de **M<sub>o</sub>** - **c**, où **c** est le prix courant de l'objet (qui correspond donc au prix auquel l'objet va partir au moment de la clôture). À la fin de cette fonction, le compte de l'offre gagnante devra avoir le bon solde et le produit remporté dans sa liste `produitsAchetés`.
+12. Implémentez la méthode `void arreterEnchere()`, qui rendra l'objet indisponible et invoquera le remboursement du compte lié à l'offre gagnante `o` de **M<sub>o</sub>** - **c**, où **c** est le prix courant de l'objet (qui correspond donc au prix auquel l'objet va partir au moment de la clôture). À la fin de cette fonction, le compte de l'offre gagnante devra avoir le bon solde et le produit remporté dans sa liste `produitsAchetés`.
 
     **Remarque** : pour réaliser cette fonction, vous serez certainement amenés à ajouter des nouvelles méthodes (ou attributs) dans certaines classes ; c'est à vous de décider ce qui est le mieux pour votre application. Vous pouvez en discuter avec votre enseignant.
 
 Les enchères seront ouvertes et clôturées sur appel explicite de `demarrerEnchere()` et `arreterEnchere()`. On supposera qu'une fois clôturée, une enchère ne sera jamais réouverte.
 
-12. Écrivez la méthode `toString()` appropriée dans la classe `Compte`. Libre à vous de décider les informations à retourner, mais en ce qui concerne les offres du compte, seules les offres gagnantes actuelles du compte devraient être affichées.
+13. Écrivez la méthode `toString()` appropriée dans la classe `Compte`. Libre à vous de décider les informations à retourner, mais en ce qui concerne les offres du compte, seules les offres gagnantes actuelles du compte devraient être affichées.
 
 
-13. Écrivez la méthode `toString()` appropriée dans la classe `Produit`. Parmi les différentes offres déposées, seule l'offre gagnante actuelle devrait être affichée.
+14. Écrivez la méthode `toString()` appropriée dans la classe `Produit`. Parmi les différentes offres déposées, seule l'offre gagnante actuelle devrait être affichée.
 
 
-14. Simulez votre application dans le programme principal (la classe `IBaille`). Pour cela, vous instancierez un produit et plusieurs comptes (3 au minimum). Pour chacun des comptes vous proposerez à l'utilisateur du logiciel (non-informaticien donc) de déposer des enchères pour ce produit en affichant les informations sur le produit et l'offre gagnante en cours.
+15. Simulez votre application dans le programme principal (la classe `IBaille`). Pour cela, vous instancierez un produit et plusieurs comptes (3 au minimum). Pour chacun des comptes vous proposerez à l'utilisateur du logiciel (non-informaticien donc) de déposer des enchères pour ce produit en affichant les informations sur le produit et l'offre gagnante en cours.
 
     Pour récupérer les données saisies par l'utilisateur à la console, vous pouvez utiliser la classe `java.util.Scanner` qui permet de "parser" de manière intelligente une chaîne de caractères. Voici un petit exemple de ce que vous pouvez faire avec :
 
@@ -161,4 +173,4 @@ Les enchères seront ouvertes et clôturées sur appel explicite de `demarrerEnc
     Pour plus de détails sur cette classe, voir l'API : https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Scanner.html
 
 
-15. Dessinez le diagramme de classes de votre application.
+16. Dessinez le diagramme de classes de votre application.
