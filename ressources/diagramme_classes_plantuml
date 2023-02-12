@@ -31,7 +31,6 @@ class OffreEnchere {
     - prixMax : int
     - etatGagnant : boolean
 
-    + getProduit() : Produit
     + getPrixEnCours() : int
     + getPrixMax() : int
     + setEtatGagnant(boolean etat) : void

@@ -49,11 +49,11 @@ Vous êtes chargé de développer le système d'enchères **iBaille**. Pour avoi
 
 Un squelette du code vous est fourni. Ci-dessous le diagramme de classes correspondant :
 
-<img style="max-width: 600px; height: auto; " src="//www.plantuml.com/plantuml/png/ZLDBRjim4Dtp58HNxaT0WkwABXAaHj55MmCv0IEDdKd48J4S1G627gZdwCLAIHDJdnYe5mBnthptPeRqLHB7qldMf4UawDXvIw611D5-khYOeEpeiKSlCshgrgLaznoQ3iM-69j_bQNE0mVxsIA9GjcfPeo2WJ9-AunqL2eoFdyd57JjJ19Tsb5z3mmpk0wTx1qBrXYT-aroCCL0UDVsehiGMd1ap41-o4runmoijjjtkUOfOADqpybPzWYopvrUrz91svEQgjpDigrroSzXBGiyGPQbyvaBiWZTGqu4_dKuP6huzdKCDYnCde3nW6ShTKabSQZuvexaICRGYKRB8CdNqwQtQnll7jH1z_LsW-QtFY6DqEj-cRoC7UNDSjBH2_x3FSym42SQEUccJALlTEXLpnEo1AslRJ-chUzjLoAt6ZYqySPuDy57cGoMe6l2ye-GGjk0XfJusnvTXDSCh_UfitpCxFZ9bRDj5ac30hn5AWtENf8wgMCfoaFCRcVZ8UavsVURYl5uBzKcZZ9xkJdjz_-4Ff2k9ql7ap5gOLzjqtNMoTy_lV1BLPtgp1LGq_ds7m00"  width=700 alt="diagramme de classes">
+<img style="max-width: 600px; height: auto; " src="//www.plantuml.com/plantuml/png/ZLDBRjj03DtFAGPUkHy12RehkaYG6aKNRGta18n4Eqmq7v1K423eWNgENgmZcQu-Zejg8GZlyRt78KTNei3QXTR98yKC3C77rA1WzXykBYOeGtpiqSk2khe54R_br7Ia_iNvybG-TW4v-O-UeXfKd6gch9HYmM-LAUwDoapFNoCfGJkJP91DhE-HSGRNgTCji59D6SnlaaEIKwIxjXVTfTGYHES6yfrlC00pijcktvIQfqIDqJsdPzazwhPqUbrhXsrFMgfnDyksJak-3sDPu8959l_8d9EZ41vA8lAFtQvGmxklO_HfOVA4J3iwMsb36XE7YY-mZn3r43hHM1cAVluxwVMfJO07Sx1vlTwW-sbNo29itI-Jcx69PR8iuz4D_mRFCmmLr28dtSntPrwBGHfP34zNinbTr-Ov9BroWfiKiavw5-oQjBphaje6BMICl-tHHNZDU5oP_Lxl2tjubShPmFecPWDS1HJx5lzsLJ7jxxLQPVjFBrVUFDt_2KEAThmYFNmvPnR-Q2lNHQU_V_N2JrLrhBl2s7IX_GC0"  width=800 alt="diagramme de classes">
 
 Vous pouvez également consulter le code source PlantUML dans le répertoire `ressources` de ce dépôt.
 
-Remarquez que la classe principale `IBaille` (celle qui contient la méthode `main(String args[])`) n'apparaît pas dans le diagramme de classes qui vous est fourni. En effet, en pratique, on ne représente pas (ou on le fait très brièvement) la classe principale dans un diagramme de classes, car toute application orientée objet doit avoir une telle classe, qui constitue le point d'entrée du programme.
+Remarquez que la classe principale `IBaille` (celle qui contient la méthode `main(String args[])`) n'apparaît pas dans le diagramme de classes qui vous est fourni. En effet, en pratique, on ne représente pas (ou on le fait très brièvement) la classe principale dans un diagramme de classes, car toute application orientée objet doit avoir une telle classe, qui constitue le point d'entrée du programme. De même les fonctions "_standard_" sont également omises dans le diagramme de classes. Par exemple `toString()`, le constructeur etc.
 
 Prenez le temps de lire le diagramme et le squelette de code, car vous aurez à le compléter en y ajoutant des méthodes et des attributs qui vous paraissent nécessaires.
 
