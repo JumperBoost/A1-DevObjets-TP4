@@ -53,7 +53,9 @@ Un squelette du code vous est fourni. Ci-dessous le diagramme de classes corresp
 
 Vous pouvez également consulter le code source PlantUML dans le répertoire `ressources` de ce dépôt.
 
-Prenez le temps de le lire et de le comprendre, car vous aurez à le compléter en y ajoutant des méthodes et des attributs qui vous paraissent nécessaires. Discutez avec votre enseignant avant de démarrer le travail.
+Remarquez que la classe principale `IBaille` (celle qui contient la méthode `main(String args[])`) n'apparaît pas dans le diagramme de classes qui vous est fourni. En effet, en pratique, on ne représente pas (ou on le fait très brièvement) la classe principale dans un diagramme de classes, car toute application orientée objet doit avoir une telle classe, qui constitue le point d'entrée du programme.
+
+Prenez le temps de lire le diagramme et le squelette de code, car vous aurez à le compléter en y ajoutant des méthodes et des attributs qui vous paraissent nécessaires.
 
 Également, quelques classes de tests unitaires vous sont fournies pour pouvoir démarrer.
 
