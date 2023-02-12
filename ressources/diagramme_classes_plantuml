@@ -1,0 +1,59 @@
+@startuml
+skinparam nodesep 300
+skinparam ranksep 100
+
+class Produit {
+    - numero : int
+    - description : String
+    - prixInitial : int
+    - pasEnchere : int
+    - coutParticipation : int
+    - disponible : boolean
+
+
+    + demarrerEnchere() : void
+    + arreterEnchere() : void
+    + getPrixActuel() : int
+    + getCoutParticipation() : int
+    + getNumero() : int
+    + setPasEnchere() : void
+    + getPasEnchere() : int
+    + ajouterOffre(OffreEnchre o) : void
+    + verifierOffre(OffreEnchre o) : boolean
+    + getOffreGagnante() : OffreEnchre
+    + estDisponible() : boolean
+    + majGagnantActuel(OffreEnchre o) : void
+
+}
+
+class OffreEnchere {
+    - prixEnCours : int
+    - prixMax : int
+    - etatGagnant : boolean
+
+    + getProduit() : Produit
+    + getPrixEnCours() : int
+    + getPrixMax() : int
+    + setEtatGagnant(boolean etat) : void
+
+}
+
+class Compte {
+    - pseudo : String
+    - solde : int
+
+    + getSolde() : int
+    + creerOffre(Produit, int, int) : OffreEnchere
+    + crediter(int) : void
+    + ajouterProduit(Produit) : void
+}
+
+OffreEnchere "mesEncheres *"-right-"produit 1" Produit
+
+
+OffreEnchere "mesEncheres *"-right-"monCompte 1" Compte
+
+Produit "produitsAchetés *"<-- Compte
+
+
+@enduml

@@ -38,8 +38,7 @@
 ## TP 4 : Systèmes d'enchères
 #### _Thème : encapsulation, cycle de vie d'une application orientée objet_
 
-Vous êtes chargé de développer le système d'enchères **iBaille**. Pour avoir une idée globale du système,
-voici le principe général de fonctionnement :
+Vous êtes chargé de développer le système d'enchères **iBaille**. Pour avoir une idée globale du système, voici le principe général de fonctionnement :
 
 * des produits sont mis en vente avec un prix initial (le prix de base) ;
 * des utilisateurs peuvent enchérir sur les produits jusqu'à ce que l'enchère soit arrêtée ;
@@ -48,7 +47,15 @@ voici le principe général de fonctionnement :
 * pour éviter des enchères inutiles (de 1 centime par exemple), le même pas d’enchère minimal est défini pour tous les produits vendus via **iBaille**;
 * afin d'éviter aux utilisateurs de devoir enchérir de nombreuses fois (lors d'un "duel" entre deux utilisateurs par exemple), lorsqu'un utilisateur propose un prix pour un produit, il propose également un prix maximal qu'il est prêt à débourser en cas d'enchère concurrente. Le détail de la détermination du gagnant et du prix final du produit seront donnés ci-dessous.
 
-Un squelette du code vous est fourni avec quelques classes de tests unitaires. Prenez le temps de le lire et de le comprendre, car vous aurez à le compléter en y ajoutant des méthodes et des attributs qui vous paraissent nécessaires. Discutez avec votre enseignant avant de démarrer le travail.
+Un squelette du code vous est fourni. Voici le diagramme de classes correspondant :
+
+<img style="max-width: 600px; height: auto; " src="//www.plantuml.com/plantuml/png/ZLDBRjim4Dtp58HNxaT0WkwABXAaHj55MmCv0IEDdKd48J4S1G627gZdwCLAIHDJdnYe5mBnthptPeRqLHB7qldMf4UawDXvIw611D5-khYOeEpeiKSlCshgrgLaznoQ3iM-69j_bQNE0mVxsIA9GjcfPeo2WJ9-AunqL2eoFdyd57JjJ19Tsb5z3mmpk0wTx1qBrXYT-aroCCL0UDVsehiGMd1ap41-o4runmoijjjtkUOfOADqpybPzWYopvrUrz91svEQgjpDigrroSzXBGiyGPQbyvaBiWZTGqu4_dKuP6huzdKCDYnCde3nW6ShTKabSQZuvexaICRGYKRB8CdNqwQtQnll7jH1z_LsW-QtFY6DqEj-cRoC7UNDSjBH2_x3FSym42SQEUccJALlTEXLpnEo1AslRJ-chUzjLoAt6ZYqySPuDy57cGoMe6l2ye-GGjk0XfJusnvTXDSCh_UfitpCxFZ9bRDj5ac30hn5AWtENf8wgMCfoaFCRcVZ8UavsVURYl5uBzKcZZ9xkJdjz_-4Ff2k9ql7ap5gOLzjqtNMoTy_lV1BLPtgp1LGq_ds7m00"  width=900 alt="diagramme de classes">
+
+Vous pouvez également consulter le code source PlantUML dans le répertoire `ressources` de ce dépôt.
+
+Prenez le temps de le lire et de le comprendre, car vous aurez à le compléter en y ajoutant des méthodes et des attributs qui vous paraissent nécessaires. Discutez avec votre enseignant avant de démarrer le travail.
+
+Également, quelques classes de tests unitaires vous sont fournies pour pouvoir démarrer.
 
 1. Implémentez la méthode `void demarrerEnchere()` de `Produit` pour qu'elle rende l'objet disponible.
 
@@ -173,4 +180,4 @@ Les enchères seront ouvertes et clôturées sur appel explicite de `demarrerEnc
     Pour plus de détails sur cette classe, voir l'API : https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Scanner.html
 
 
-16. Dessinez le diagramme de classes de votre application.
+16. En fonction de votre réalisation, raffinez le modèle du diagramme de classes qui vous a été donné au début du sujet en y apportant les modifications nécessaires. **Rappel :** le code source PlantUML est dans le répertoire `ressources` de votre dépôt.
