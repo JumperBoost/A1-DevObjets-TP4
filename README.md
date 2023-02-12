@@ -47,9 +47,9 @@ Vous êtes chargé de développer le système d'enchères **iBaille**. Pour avoi
 * pour éviter des enchères inutiles (de 1 centime par exemple), le même pas d’enchère minimal est défini pour tous les produits vendus via **iBaille**;
 * afin d'éviter aux utilisateurs de devoir enchérir de nombreuses fois (lors d'un "duel" entre deux utilisateurs par exemple), lorsqu'un utilisateur propose un prix pour un produit, il propose également un prix maximal qu'il est prêt à débourser en cas d'enchère concurrente. Le détail de la détermination du gagnant et du prix final du produit seront donnés ci-dessous.
 
-Un squelette du code vous est fourni. Voici le diagramme de classes correspondant :
+Un squelette du code vous est fourni. Ci-dessous le diagramme de classes correspondant :
 
-<img style="max-width: 600px; height: auto; " src="//www.plantuml.com/plantuml/png/ZLDBRjim4Dtp58HNxaT0WkwABXAaHj55MmCv0IEDdKd48J4S1G627gZdwCLAIHDJdnYe5mBnthptPeRqLHB7qldMf4UawDXvIw611D5-khYOeEpeiKSlCshgrgLaznoQ3iM-69j_bQNE0mVxsIA9GjcfPeo2WJ9-AunqL2eoFdyd57JjJ19Tsb5z3mmpk0wTx1qBrXYT-aroCCL0UDVsehiGMd1ap41-o4runmoijjjtkUOfOADqpybPzWYopvrUrz91svEQgjpDigrroSzXBGiyGPQbyvaBiWZTGqu4_dKuP6huzdKCDYnCde3nW6ShTKabSQZuvexaICRGYKRB8CdNqwQtQnll7jH1z_LsW-QtFY6DqEj-cRoC7UNDSjBH2_x3FSym42SQEUccJALlTEXLpnEo1AslRJ-chUzjLoAt6ZYqySPuDy57cGoMe6l2ye-GGjk0XfJusnvTXDSCh_UfitpCxFZ9bRDj5ac30hn5AWtENf8wgMCfoaFCRcVZ8UavsVURYl5uBzKcZZ9xkJdjz_-4Ff2k9ql7ap5gOLzjqtNMoTy_lV1BLPtgp1LGq_ds7m00"  width=900 alt="diagramme de classes">
+<img style="max-width: 600px; height: auto; " src="//www.plantuml.com/plantuml/png/ZLDBRjim4Dtp58HNxaT0WkwABXAaHj55MmCv0IEDdKd48J4S1G627gZdwCLAIHDJdnYe5mBnthptPeRqLHB7qldMf4UawDXvIw611D5-khYOeEpeiKSlCshgrgLaznoQ3iM-69j_bQNE0mVxsIA9GjcfPeo2WJ9-AunqL2eoFdyd57JjJ19Tsb5z3mmpk0wTx1qBrXYT-aroCCL0UDVsehiGMd1ap41-o4runmoijjjtkUOfOADqpybPzWYopvrUrz91svEQgjpDigrroSzXBGiyGPQbyvaBiWZTGqu4_dKuP6huzdKCDYnCde3nW6ShTKabSQZuvexaICRGYKRB8CdNqwQtQnll7jH1z_LsW-QtFY6DqEj-cRoC7UNDSjBH2_x3FSym42SQEUccJALlTEXLpnEo1AslRJ-chUzjLoAt6ZYqySPuDy57cGoMe6l2ye-GGjk0XfJusnvTXDSCh_UfitpCxFZ9bRDj5ac30hn5AWtENf8wgMCfoaFCRcVZ8UavsVURYl5uBzKcZZ9xkJdjz_-4Ff2k9ql7ap5gOLzjqtNMoTy_lV1BLPtgp1LGq_ds7m00"  width=700 alt="diagramme de classes">
 
 Vous pouvez également consulter le code source PlantUML dans le répertoire `ressources` de ce dépôt.
 
