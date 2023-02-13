@@ -99,7 +99,7 @@ Soient un compte **toto** (ayant un solde **s**), proposant une offre **o** (de 
 * **o** est une offre correcte pour le produit
 
   <a name="remGagnantActuel"></a> **Remarque :**
-  Il se peut qu'un utilisateur détenant l'offre gagnante actuelle du produit, souhaite enchérir une nouvelle fois. Par exemple, cela peut arriver sur un coup de stress : la crainte de perdre devient trop forte ! C'est pour ce cas précis que l'inégalité
+  Il se peut qu'un utilisateur détenant l'offre gagnante actuelle du produit, souhaite enchérir une nouvelle fois. Par exemple, cela peut arriver sur un coup de stress : la crainte de perdre devient trop forte ! Ce qui explique la présence de la seconde inégalité ci-dessus.
 
 8. Écrivez le code de la méthode `public OffreEnchere creerOffre(Produit produit, int prix, int prixMax)` de la classe `Compte` qui, à partir de ses paramètres, instancie et retourne une offre si celle-ci est **valide**. Également, si l'offre est valide, la méthode devra débiter le compte de `prixMax` + le coût de participation du produit. Enfin, l'offre valide devra être stockée dans la liste des enchères du compte. La méthode doit retourner `null` si l'offre n'est pas valide.
 
