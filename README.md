@@ -49,7 +49,7 @@ Vous êtes chargé de développer le système d'enchères **iBaille**. Pour avoi
 
 Un squelette du code vous est fourni. Ci-dessous le diagramme de classes correspondant :
 
-<img style="max-width: 600px; height: auto; " src="//www.plantuml.com/plantuml/png/ZLDBRjj03DtFAGPUkHy12RehkaYG6aKNRGta18n4Eqmq7v1K423eWNgENgmZcQu-Zejg8GZlyRt78KTNei3QXTR98yKC3C77rA1WzXykBYOeGtpiqSk2khe54R_br7Ia_iNvybG-TW4v-O-UeXfKd6gch9HYmM-LAUwDoapFNoCfGJkJP91DhE-HSGRNgTCji59D6SnlaaEIKwIxjXVTfTGYHES6yfrlC00pijcktvIQfqIDqJsdPzazwhPqUbrhXsrFMgfnDyksJak-3sDPu8959l_8d9EZ41vA8lAFtQvGmxklO_HfOVA4J3iwMsb36XE7YY-mZn3r43hHM1cAVluxwVMfJO07Sx1vlTwW-sbNo29itI-Jcx69PR8iuz4D_mRFCmmLr28dtSntPrwBGHfP34zNinbTr-Ov9BroWfiKiavw5-oQjBphaje6BMICl-tHHNZDU5oP_Lxl2tjubShPmFecPWDS1HJx5lzsLJ7jxxLQPVjFBrVUFDt_2KEAThmYFNmvPnR-Q2lNHQU_V_N2JrLrhBl2s7IX_GC0"  width=800 alt="diagramme de classes">
+<img style="max-width: 600px; height: auto; " src="//www.plantuml.com/plantuml/png/ZLDBRjmm3Dth5CAifXy32RehkaYG3eeksWwG4oWsPyB4eWIA3W8CUg2UenUhRDFmnpMGMHZ2UtplKQJc9ebZQNnjqZDITEoyfL11WcW_NLrDK7RqtABN6JLbxLAoHmvLWs8lnkPVOQdnmC5-jaYYK7Og6QDWe8pV2oETbOgChzy91LqzaqIN3bG-0iCCBaCZHyU29KQdVfCSJ34GFjIjw2646XmPqv4VSXFUCGEhxVvThda9M2dTShB9da6EkTFRKXgeCwcf0tUtR6jTyhCRom9Fa6LfEtCa5qBtb1E1VvrEcUg-mxJ2mkK564-uNQfZ6ZExac_kJ8waZvsAj0wIV1s63VkrZtTFQg4Zs-ZH_1wUqQpWCdaT1yhJvQJN7_4VxdM6WJZHp4axy_sfrtexnzvmlPx3wBfNpoxfFpUu2pxAfFS4JHMMxps5kW8D6UFlMtGHNZ8CMzE_sCVCzf_rLWP9XGAyHneRd3qOTLB7iIXVOhQ0dOUavsJVxmh6ywCKkzZBxFNEgeDvcz07ql5aQNyoHYtiO9jkiqx-_cc5NufYgBi1gXfV_mC0"  width=800 alt="diagramme de classes">
 
 Vous pouvez également consulter le code source PlantUML dans le répertoire `ressources` de ce dépôt.
 
