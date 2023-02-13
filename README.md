@@ -94,7 +94,7 @@ Prenez le temps de lire le diagramme et le squelette de code, car vous aurez à 
 Soient un compte **toto** (ayant un solde **s**), proposant une offre **o** (de prix courant **p<sub>o</sub>** et maximum **M<sub>o</sub>**) pour un produit (de coût de participation **c<sub>p</sub>**). On dit que **o** est **valide** si toutes les conditions suivantes sont respectées :
 
 * **s**  &ge; **M<sub>o</sub>** + **c<sub>p</sub>** si **toto** n'est pas le gagnant actuel
-* **s** - **M<sub>g</sub>**  &ge; **M<sub>o</sub>** + **c<sub>p</sub>** si **toto** est le gagnant actuel et **M<sub>g</sub>** est le prix maximal de l'offre gagnante actuelle (voir [Remarque ci-dessous](#remGagnantActuel))
+* **s** + **M<sub>g</sub>**  &ge; **M<sub>o</sub>** + **c<sub>p</sub>** si **toto** est le gagnant actuel et **M<sub>g</sub>** est le prix maximal de l'offre gagnante actuelle (voir [Remarque ci-dessous](#remGagnantActuel))
 * **M<sub>o</sub>** &ge; **p<sub>o</sub>**
 * **o** est une offre correcte pour le produit
 
