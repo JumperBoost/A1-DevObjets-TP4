@@ -18,11 +18,11 @@ class Produit {
     + getNumero() : int
     + setPasEnchere() : void
     + getPasEnchere() : int
-    + ajouterOffre(OffreEnchre o) : void
-    + verifierOffre(OffreEnchre o) : boolean
-    + getOffreGagnante() : OffreEnchre
+    + ajouterOffre(OffreEnchere o) : void
+    + verifierOffre(OffreEnchere o) : boolean
+    + getOffreGagnante() : OffreEnchere
     + estDisponible() : boolean
-    + majGagnantActuel(OffreEnchre o) : void
+    + majGagnantActuel(OffreEnchere o) : void
 
 }
 
