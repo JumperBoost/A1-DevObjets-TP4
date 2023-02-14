@@ -37,7 +37,8 @@ class ProduitTest {
     @Disabled
     @Test
     void test_verifier_offre_enchere_non_demarree(){
-        Produit p = new Produit(0, "", 0, 152);
+        Produit p = new Produit(0, "", 0, 2);
+        OffreEnchere o = new OffreEnchere(10, 14, p, compte );
         assertFalse(p.verifierOffre(o));
     }
 
@@ -63,11 +64,10 @@ class ProduitTest {
 
     @Disabled
     @Test
-    public void ajouterOffre_quand_il_y_a_offre_pas_enchere_non_respecte() {
+    public void verifierOffre_quand_il_y_a_offre_pas_enchere_non_respecte() {
         produit.ajouterOffre(o);
         OffreEnchere o2 = new OffreEnchere(16, 20, produit, compte);
-        produit.ajouterOffre(o2);
-        assertSame(produit.getOffreGagnante(), o);
+        assertFalse(produit.verifierOffre(o2));
     }
 
 }
