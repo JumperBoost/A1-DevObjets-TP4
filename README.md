@@ -123,7 +123,7 @@ Considérons un produit. Quand une nouvelle offre **o2** (supposée valide), de 
 * si aucune enchère n'a encore été déposée sur ce produit, alors la nouvelle offre est désignée comme gagnante
 
 
-On rappelle qu'un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère. Par exemple, il pourra le faire si son offre a été "battue" par un autre enchérisseur. Ou encore s'il est dans le cas de la situation décrite dans la [Remarque précédant question 8](#remGagnantActuel).
+On rappelle qu'un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère. Par exemple, il pourra le faire si son offre a été "battue" par un autre enchérisseur. Ou encore s'il est dans le cas de la situation décrite dans la [Remarque précédant la question 8](#remGagnantActuel).
 
 10. Supposons que pour un produit fixé, on ait une première offre **o1=(10,20)** (la notation signifie que **p<sub>o1</sub>=10** et **M<sub>o1</sub>=20**), avec un pas d'enchère de **2**. Imaginons que les offres ci-dessous sont ensuite, faites pour ce produit :
     * **o2=(11,25)**, avec enchérisseur différent de celui de **o1**
@@ -131,7 +131,7 @@ On rappelle qu'un utilisateur peut déposer une nouvelle offre d'enchère sur le
     * **o4=(16,30)**, avec enchérisseur différent de celui de **o3**
     * **o5=(25,30)**, avec enchérisseur différent de celui de **o4**
     * **o6=(27,35)**, avec enchérisseur différent de celui de **o5**
-    * **o7=(29,35)**, avec le même enchérisseur que celui de  **o6**
+    * **o7=(32,74)**, avec le même enchérisseur que celui de **o6**
 
     Indiquez (sur papier) après chaque offre quelle est l'offre actuellement gagnante, ainsi que le prix courant de l'objet.
 
