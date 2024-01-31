@@ -31,7 +31,7 @@
 - A priori, la plupart des méthodes devraient être déclarées publiques (`public`). Vous pouvez tout de même déclarer et utiliser des méthodes `private` du moment qu'elles vous sont utiles et que votre programme fonctionne correctement.
 - Essayez de respecter les conventions de nommage *Java* (voir la fin des transparents du [cours](https://www.lirmm.fr/~pvalicov//Cours/dev-objets/Generalites_x4.pdf) ou disponibles sur le site d'Oracle).
 - **Sauf indication contraire, vous ne devrez pas modifier la signature des méthodes et des attributs des classes qui vous sont proposées.**
-- Quelques test unitaires vous sont déjà données (ils sont annotés `@Disabled`). Cependant, ils ne suffisent pas pour tester l'intégralité des cas de figure du sujet. **Pensez à écrire suffisamment de tests unitaires pour les différentes méthodes implémentées**
+- Quelques tests unitaires vous sont déjà données (ils sont annotés `@Disabled`). Cependant, ils ne suffisent pas pour tester l'intégralité des cas de figure du sujet. **Pensez à écrire suffisamment de tests unitaires pour les différentes méthodes implémentées**
 - Date limite de rendu de votre code sur le dépôt GitLab : **dimanche 18 février à 23 h 00**.
 
 
@@ -94,7 +94,7 @@ Prenez le temps de lire le diagramme et le squelette de code, car vous aurez à 
 Soient un compte **toto** (ayant un solde **s**), proposant une offre **o** (de prix courant **p<sub>o</sub>** et maximum **M<sub>o</sub>**) pour un produit (de coût de participation **c<sub>p</sub>**). On dit que **o** est **valide** si toutes les conditions suivantes sont respectées :
 
 * **s**  &ge; **M<sub>o</sub>** + **c<sub>p</sub>** si **toto** n'est pas le gagnant actuel
-* **s** + **M<sub>g</sub>**  &ge; **M<sub>o</sub>** + **c<sub>p</sub>** si **toto** est le gagnant actuel et **M<sub>g</sub>** est le prix maximal de l'offre gagnante actuelle (voir [Remarque ci-dessous](#remGagnantActuel))
+* **s** + **M<sub>g</sub>**  &ge; **M<sub>o</sub>** + **c<sub>p</sub>** si **toto** est le gagnant actuel et **M<sub>g</sub>** est le prix maximal de l'offre gagnante actuelle (voir la remarque ci-dessous)
 * **M<sub>o</sub>** &ge; **p<sub>o</sub>**
 * **o** est une offre correcte pour le produit
 
@@ -114,21 +114,24 @@ Par conséquent, si une offre s'avère perdante, alors il faut rembourser **M<su
 Nous allons maintenant implémenter la méthode la plus importante, qui va gérer la concurrence entre plusieurs offres valides pour un produit fixé.
 Voici les règles permettant de déterminer si une nouvelle offre valide est gagnante ou non, et de fixer la nouvelle valeur du prix courant.
 
-Considérons un produit. Quand une nouvelle offre (supposée valide) **o2** (de prix courant **p<sub>o2</sub>** et maximum **M<sub>o2</sub>**) arrive pour ce produit
-* si ce n'est pas la première enchère, alors notons **p<sub>o1</sub>** et **M<sub>o1</sub>** le prix courant et maximum de l'offre gagnante actuelle.
+Considérons un produit. Quand une nouvelle offre **o2** (supposée valide), de prix courant **p<sub>o2</sub>** et maximum **M<sub>o2</sub>**, arrive pour ce produit
+* si ce n'est pas la première enchère, alors notons **p<sub>o1</sub>** et **M<sub>o1</sub>** le prix courant et maximum de l'offre gagnante actuelle ;
 * si **M<sub>o1</sub>** &ge; **M<sub>o2</sub>**, alors le gagnant ne change pas et la valeur **p<sub>o</sub>** est actualisée à **M<sub>o2</sub>** ;
-* si **M<sub>o1</sub>** < **M<sub>o2</sub>**, alors la nouvelle enchère est désignée comme gagnante, et la valeur **p<sub>o</sub>** est actualisée à max **(M<sub>o1</sub>, p<sub>o2</sub>)** ;
+* si **M<sub>o1</sub>** < **M<sub>o2</sub>**, alors la nouvelle enchère sera désignée comme gagnante, et deux cas seront à distinguer :
+  * si le compte du gagnant actuel (détenant l'offre **o1**) est le même que celui proposant l'offre **o2**, alors la valeur **p<sub>o</sub>** est actualisée à **p<sub>o2</sub>** ;
+  * sinon, la valeur **p<sub>o</sub>** est actualisée à max **(M<sub>o1</sub>, p<sub>o2</sub>)** ;
 * si aucune enchère n'a encore été déposée sur ce produit, alors la nouvelle offre est désignée comme gagnante
 
 
 On rappelle qu'un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère. Par exemple, il pourra le faire si son offre a été "battue" par un autre enchérisseur. Ou encore s'il est dans le cas de la situation décrite dans la [Remarque précédant question 8](#remGagnantActuel).
 
 10. Supposons que pour un produit fixé, on ait une première offre **o1=(10,20)** (la notation signifie que **p<sub>o1</sub>=10** et **M<sub>o1</sub>=20**), avec un pas d'enchère de **2**. Imaginons que les offres ci-dessous sont ensuite, faites pour ce produit :
-    * **o2=(11,25)**
-    * **o3=(12,15)**
-    * **o4=(16,30)**
-    * **o5=(25,30)**
-    * **o6=(27,35)**
+    * **o2=(11,25)**, avec enchérisseur différent de celui de **o1**
+    * **o3=(12,15)**, avec enchérisseur différent de celui de **o2**
+    * **o4=(16,30)**, avec enchérisseur différent de celui de **o3**
+    * **o5=(25,30)**, avec enchérisseur différent de celui de **o4**
+    * **o6=(27,35)**, avec enchérisseur différent de celui de **o5**
+    * **o7=(29,35)**, avec le même enchérisseur que celui de  **o6**
 
     Indiquez (sur papier) après chaque offre quelle est l'offre actuellement gagnante, ainsi que le prix courant de l'objet.
 

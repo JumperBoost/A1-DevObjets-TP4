@@ -57,14 +57,14 @@ class ProduitTest {
 
     @Disabled
     @Test
-    void ajouterOffre_quand_pas_d_offre() {
+    void test_ajouterOffre_quand_c_est_la_premiere_offre() {
         produit.ajouterOffre(o);
         assertSame(produit.getOffreGagnante(), o);
     }
 
     @Disabled
     @Test
-    public void verifierOffre_quand_il_y_a_offre_pas_enchere_non_respecte() {
+    public void test_verifierOffre_quand_il_y_a_offre_pas_enchere_non_respecte() {
         produit.ajouterOffre(o);
         OffreEnchere o2 = new OffreEnchere(16, 20, produit, compte);
         assertFalse(produit.verifierOffre(o2));
