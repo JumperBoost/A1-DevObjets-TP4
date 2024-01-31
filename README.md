@@ -31,8 +31,8 @@
 - A priori, la plupart des méthodes devraient être déclarées publiques (`public`). Vous pouvez tout de même déclarer et utiliser des méthodes `private` du moment qu'elles vous sont utiles et que votre programme fonctionne correctement.
 - Essayez de respecter les conventions de nommage *Java* (voir la fin des transparents du [cours](https://www.lirmm.fr/~pvalicov//Cours/dev-objets/Generalites_x4.pdf) ou disponibles sur le site d'Oracle).
 - **Sauf indication contraire, vous ne devrez pas modifier la signature des méthodes et des attributs des classes qui vous sont proposées.**
-- **Pensez à écrire des tests unitaires pour les différentes méthodes implémentées**
-- Date limite de rendu de votre code sur le dépôt GitLab : **dimanche 19 février à 23 h 00**.
+- Quelques test unitaires vous sont déjà données (ils sont annotés `@Disabled`). Cependant, ils ne suffisent pas pour tester l'intégralité des cas de figure du sujet. **Pensez à écrire suffisamment de tests unitaires pour les différentes méthodes implémentées**
+- Date limite de rendu de votre code sur le dépôt GitLab : **dimanche 18 février à 23 h 00**.
 
 
 ## TP 4 : Systèmes d'enchères
