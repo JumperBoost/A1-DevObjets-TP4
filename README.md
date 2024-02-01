@@ -123,7 +123,7 @@ Considérons un produit pour lequel arrive une nouvelle offre **o2** (supposée 
      * si **M<sub>o1</sub> < M<sub>o2</sub>**, alors la nouvelle enchère sera désignée comme gagnante,  et la valeur **p<sub>o2</sub>** est actualisée à **max(M<sub>o1</sub>, p<sub>o2</sub>)**.
   * Si le compte du gagnant actuel (détenant l'offre **o1**) est le même que celui proposant l'offre **o2** :
      * si **M<sub>o1</sub> &ge; M<sub>o2</sub>**, alors l'offre gagnante reste la même, mais son maximum **M<sub>o1</sub>** est actualisée à **M<sub>o2</sub>** et la valeur **p<sub>o1</sub>** est actualisée à **p<sub>o2</sub>** ;
-     * si **M<sub>o1</sub> < M<sub>o2</sub>**, alors la nouvelle d'enchère sera désignée comme gagnante et **p<sub>o2</sub>** et **M<sub>o2</sub>** resteront inchangés.
+     * si **M<sub>o1</sub> < M<sub>o2</sub>**, alors la nouvelle offre d'enchère sera désignée comme gagnante et **p<sub>o2</sub>** et **M<sub>o2</sub>** resteront inchangés.
      
      En quelque sorte, en surenchérissant sur soi-même le gagnant actuel peut ajuster à la fois le prix courant et le prix maximal qu'il est prêt à payer (mais chaque ajustement lui coûte le montant de la participation tout de même..).
 
