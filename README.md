@@ -61,9 +61,9 @@ Prenez le temps de lire le diagramme et le squelette de code, car vous aurez à 
 
 1. Implémentez la méthode `void demarrerEnchere()` de `Produit` pour qu'elle rende l'objet disponible.
 
-1. Quelque chose a été oublié dans la classe `Produit` : comme indiqué précédemment, le pas d'enchère doit être systématiquement le même pour tous les produits, mais modifiable par l'utilisateur. Changez la déclaration de cet attribut afin de satisfaire cette contrainte. Doit-on modifier également les méthodes `void setPasEnchere()` et `int getPasEnchere()` ? Justifiez.
+1. Quelque chose a été oublié dans la classe `Produit` : comme indiqué précédemment, le pas d'enchère doit être systématiquement le même pour tous les produits, mais modifiable par le client. Changez la déclaration de cet attribut afin de satisfaire cette contrainte. Doit-on modifier également les méthodes `void setPasEnchere()` et `int getPasEnchere()` ? Justifiez.
 
-   **Remarque** : ne pas confondre la notion d'_utilisateur du logiciel_ (non-informaticien) et l'_utilisateur-programmeur_ qui est censé se servir de votre application pour poursuivre son développement, pour sa maintenance, le débuggage, etc. Dans ce cours l'utilisateur, c'est l'informaticien.
+   **Remarque** : ne pas confondre la notion de _client du site_ (non-informaticien) et le client de l'application qui est censé se servir de votre application pour poursuivre son développement, pour sa maintenance, le débuggage, etc. Dans ce cours le client, c'est l'informaticien.
 
 1. Complétez la classe `Compte` en y ajoutant une méthode qui permet de créditer le compte avec une somme donnée. Cette somme pourra éventuellement être négative, ce qui permettra alors de retirer de l'argent du compte.
 
@@ -133,18 +133,18 @@ On rappelle qu'un utilisateur peut déposer une nouvelle offre d'enchère sur le
     * **o6=(27,35)**, avec enchérisseur différent de celui de **o5**
     * **o7=(32,74)**, avec le même enchérisseur que celui de **o6**
 
-    Indiquez (sur papier) après chaque offre quelle est l'offre actuellement gagnante, ainsi que le prix courant de l'objet.
+    Indiquez (sur papier) après chaque offre, quelle est l'offre actuellement gagnante, ainsi que le prix courant de l'objet.
 
-11. Implémentez la méthode `void ajouterOffre(OffreEnchere o)` de la classe `Produit` qui, étant donné une nouvelle offre `o` (supposée valide, et pour le même produit), effectue les actions suivantes :
-    * ajoute `o` à la liste d'offres d'enchères du produit ;
-    * met à jour l'offre gagnante actuelle sur le produit (en déterminant si `o` est gagnante ou non, selon les règles ci-dessus) ;
-    * change correctement l'état des offres en concurrence en "gagnante" ou "perdante", tout en déclenchant le remboursement du compte perdant (utiliser la méthode `setEtatGagnant(boolean etat)`).
+    11. Implémentez la méthode `void ajouterOffre(OffreEnchere o)` de la classe `Produit` qui, étant donné une nouvelle offre **o** (supposée valide, et pour le même produit), effectue les actions suivantes :
+        * ajoute **o** à la liste d'offres d'enchères du produit ;
+        * met à jour l'offre gagnante actuelle sur le produit (en déterminant si **o** est gagnante ou non, selon les règles ci-dessus) ;
+        * change correctement l'état des offres en concurrence en "gagnante" ou "perdante", tout en déclenchant le remboursement du compte perdant (utiliser la méthode `setEtatGagnant(boolean etat)`).
 
-**Remarque :** nul besoin de vérifier ici si l'offre est valide, à l'utilisation de la méthode `void ajouterOffre(OffreEnchere o)` on suppose l'offre  `o` comme étant valide.
+**Remarque :** nul besoin de vérifier ici si l'offre est valide, à l'utilisation de la méthode `void ajouterOffre(OffreEnchere o)` on suppose l'offre  **o** comme étant valide.
 
 **Remarque :** vous pouvez ajouter des méthodes auxiliaires qui vous paraissent nécessaires.
 
-12. Implémentez la méthode `void arreterEnchere()`, qui rendra l'objet indisponible et invoquera le remboursement du compte lié à l'offre gagnante `o` de **M<sub>o</sub>** - **c**, où **c** est le prix courant de l'objet (qui correspond donc au prix auquel l'objet va partir au moment de la clôture). À la fin de cette fonction, le compte de l'offre gagnante devra avoir le bon solde et le produit remporté dans sa liste `produitsAchetés`.
+12. Implémentez la méthode `void arreterEnchere()`, qui rendra l'objet indisponible et invoquera le remboursement du compte lié à l'offre gagnante **o** de **M<sub>o</sub>** - **c**, où **c** est le prix courant de l'objet (qui correspond donc au prix auquel l'objet va partir au moment de la clôture). À la fin de cette fonction, le compte de l'offre gagnante devra avoir le bon solde et le produit remporté dans sa liste `produitsAchetés`.
 
     **Remarque** : pour réaliser cette fonction, vous serez certainement amenés à ajouter des nouvelles méthodes (ou attributs) dans certaines classes ; c'est à vous de décider ce qui est le mieux pour votre application. Vous pouvez en discuter avec votre enseignant.
 
@@ -156,9 +156,9 @@ Les enchères seront ouvertes et clôturées sur appel explicite de `demarrerEnc
 14. Écrivez la méthode `toString()` appropriée dans la classe `Produit`. Parmi les différentes offres déposées, seule l'offre gagnante actuelle devrait être affichée.
 
 
-15. Simulez votre application dans le programme principal (la classe `IBaille`). Pour cela, vous instancierez un produit et plusieurs comptes (3 au minimum). Pour chacun des comptes vous proposerez à l'utilisateur du logiciel (non-informaticien donc) de déposer des enchères pour ce produit en affichant les informations sur le produit et l'offre gagnante en cours.
+15. Simulez votre application dans le programme principal (la classe `IBaille`). Pour cela, vous instancierez un produit et plusieurs comptes (3 au minimum). Pour chacun des comptes vous proposerez au client du logiciel (non-informaticien donc) de déposer des enchères pour ce produit en affichant les informations sur le produit et l'offre gagnante en cours.
 
-    Pour récupérer les données saisies par l'utilisateur à la console, vous pouvez utiliser la classe `java.util.Scanner` qui permet de "parser" de manière intelligente une chaîne de caractères. Voici un petit exemple de ce que vous pouvez faire avec :
+    Pour récupérer les données saisies par l'utilisateur à la console, vous pouvez vous servir de la classe `java.util.Scanner` qui permet de "parser" de manière intelligente une chaîne de caractères. Voici un petit exemple de ce que vous pouvez faire avec :
 
     ```java
 
