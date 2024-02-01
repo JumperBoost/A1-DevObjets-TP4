@@ -44,7 +44,7 @@ Vous êtes chargé de développer le système d'enchères **iBaille**. Pour avoi
 * des utilisateurs peuvent enchérir sur les produits jusqu'à ce que l'enchère soit arrêtée ;
 * pour pouvoir participer les utilisateurs doivent payer un coût de participation (différent pour chaque produit) ; ce montant ne sera jamais remboursé -- bénéfice du site ;
 * à la fin de la vente, l'utilisateur ayant proposé le prix le plus élevé, remporte le produit ;
-* pour éviter des enchères inutiles (de 1 centime par exemple), le même pas d’enchère minimal est défini pour tous les produits vendus via **iBaille**;
+* pour éviter des enchères inutiles (de 1 centime par exemple), le même pas d’enchère minimal est défini pour tous les produits vendus via **iBaille** ;
 * afin d'éviter aux utilisateurs de devoir enchérir de nombreuses fois (lors d'un "duel" entre deux utilisateurs par exemple), lorsqu'un utilisateur propose un prix pour un produit, il propose également un prix maximal qu'il est prêt à débourser en cas d'enchère concurrente. Le détail de la détermination du gagnant et du prix final du produit seront donnés ci-dessous.
 
 Un squelette du code vous est fourni. Ci-dessous le diagramme de classes correspondant :
@@ -63,7 +63,7 @@ Prenez le temps de lire le diagramme et le squelette de code, car vous aurez à 
 
 1. Quelque chose a été oublié dans la classe `Produit` : comme indiqué précédemment, le pas d'enchère doit être systématiquement le même pour tous les produits, mais modifiable par le client. Changez la déclaration de cet attribut afin de satisfaire cette contrainte. Doit-on modifier également les méthodes `void setPasEnchere()` et `int getPasEnchere()` ? Justifiez.
 
-   **Remarque** : ne pas confondre la notion de _client du site_ (non-informaticien) et le client de l'application qui est censé se servir de votre application pour poursuivre son développement, pour sa maintenance, le débuggage, etc. Dans ce cours le client, c'est l'informaticien.
+   **Remarque** : ne pas confondre la notion de _client du site_ (non-informaticien) et le client de l'application (informaticien) qui va se servir de votre code pour poursuivre son développement, pour le maintenir, le débugger, etc. Dans ce cours le client, c'est l'informaticien.
 
 1. Complétez la classe `Compte` en y ajoutant une méthode qui permet de créditer le compte avec une somme donnée. Cette somme pourra éventuellement être négative, ce qui permettra alors de retirer de l'argent du compte.
 
@@ -93,9 +93,9 @@ Prenez le temps de lire le diagramme et le squelette de code, car vous aurez à 
 
 Soient un compte **toto** (ayant un solde **s**), proposant une offre **o** (de prix courant **p<sub>o</sub>** et maximum **M<sub>o</sub>**) pour un produit (de coût de participation **c<sub>p</sub>**). On dit que **o** est **valide** si toutes les conditions suivantes sont respectées :
 
-* **s**  &ge; **M<sub>o</sub>** + **c<sub>p</sub>** si **toto** n'est pas le gagnant actuel
-* **s** + **M<sub>g</sub>**  &ge; **M<sub>o</sub>** + **c<sub>p</sub>** si **toto** est le gagnant actuel et **M<sub>g</sub>** est le prix maximal de l'offre gagnante actuelle (voir la remarque ci-dessous)
-* **M<sub>o</sub>** &ge; **p<sub>o</sub>**
+* **s &ge; M<sub>o</sub> + c<sub>p</sub>** si **toto** n'est pas le gagnant actuel
+* **s + M<sub>g</sub>  &ge; M<sub>o</sub> + c<sub>p</sub>** si **toto** est le gagnant actuel et **M<sub>g</sub>** est le prix maximal de l'offre gagnante actuelle (voir la remarque ci-dessous)
+* **M<sub>o</sub> &ge; p<sub>o</sub>**
 * **o** est une offre correcte pour le produit
 
   <a name="remGagnantActuel"></a> **Remarque :**
@@ -114,16 +114,21 @@ Par conséquent, si une offre s'avère perdante, alors il faut rembourser **M<su
 Nous allons maintenant implémenter la méthode la plus importante, qui va gérer la concurrence entre plusieurs offres valides pour un produit fixé.
 Voici les règles permettant de déterminer si une nouvelle offre valide est gagnante ou non, et de fixer la nouvelle valeur du prix courant.
 
-Considérons un produit. Quand une nouvelle offre **o2** (supposée valide), de prix courant **p<sub>o2</sub>** et maximum **M<sub>o2</sub>**, arrive pour ce produit
-* si ce n'est pas la première enchère, alors notons **p<sub>o1</sub>** et **M<sub>o1</sub>** le prix courant et maximum de l'offre gagnante actuelle ;
-* si **M<sub>o1</sub>** &ge; **M<sub>o2</sub>**, alors le gagnant ne change pas et la valeur **p<sub>o</sub>** est actualisée à **M<sub>o2</sub>** ;
-* si **M<sub>o1</sub>** < **M<sub>o2</sub>**, alors la nouvelle enchère sera désignée comme gagnante, et deux cas seront à distinguer :
-  * si le compte du gagnant actuel (détenant l'offre **o1**) est le même que celui proposant l'offre **o2**, alors la valeur **p<sub>o</sub>** est actualisée à **p<sub>o2</sub>** ;
-  * sinon, la valeur **p<sub>o</sub>** est actualisée à max **(M<sub>o1</sub>, p<sub>o2</sub>)** ;
-* si aucune enchère n'a encore été déposée sur ce produit, alors la nouvelle offre est désignée comme gagnante
+Considérons un produit pour lequel arrive une nouvelle offre **o2** (supposée valide), de prix courant **p<sub>o2</sub>** et maximum **M<sub>o2</sub>**. 
+
+* Si aucune enchère n'a encore été déposée sur ce produit, alors la nouvelle offre est désignée comme gagnante.
+* Sinon, notons respectivement **p<sub>o1</sub>** et **M<sub>o1</sub>** le prix courant et le maximum de l'offre gagnante actuelle. On distingue deux cas :
+  * Si le compte du gagnant actuel (détenant l'offre **o1**) est différent de celui proposant l'offre **o2** :
+     *  si **M<sub>o1</sub> &ge; M<sub>o2</sub>**, alors le gagnant ne change pas et la valeur **p<sub>o1</sub>** est actualisée à **M<sub>o2</sub>** ;
+     * si **M<sub>o1</sub> < M<sub>o2</sub>**, alors la nouvelle enchère sera désignée comme gagnante,  et la valeur **p<sub>o2</sub>** est actualisée à **max(M<sub>o1</sub>, p<sub>o2</sub>)**.
+  * Si le compte du gagnant actuel (détenant l'offre **o1**) est le même que celui proposant l'offre **o2** :
+     * si **M<sub>o1</sub> &ge; M<sub>o2</sub>**, alors l'offre gagnante reste la même, mais son maximum **M<sub>o1</sub>** est actualisée à **M<sub>o2</sub>** et la valeur **p<sub>o1</sub>** est actualisée à **p<sub>o2</sub>** ;
+     * si **M<sub>o1</sub> < M<sub>o2</sub>**, alors la nouvelle d'enchère sera désignée comme gagnante et **p<sub>o2</sub>** et **M<sub>o2</sub>** resteront inchangés.
+     
+     En quelque sorte, en surenchérissant sur soi-même le gagnant actuel peut ajuster à la fois le prix courant et le prix maximal qu'il est prêt à payer (mais chaque ajustement lui coûte le montant de la participation tout de même..).
 
 
-On rappelle qu'un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère. Par exemple, il pourra le faire si son offre a été "battue" par un autre enchérisseur. Ou encore s'il est dans le cas de la situation décrite dans la [Remarque précédant la question 8](#remGagnantActuel).
+<!-- On rappelle qu'un utilisateur peut déposer une nouvelle offre d'enchère sur le même produit sur lequel il a déjà déposé une offre d'enchère. Par exemple, il pourra le faire si son offre a été "battue" par un autre enchérisseur. Ou encore s'il est dans le cas de la situation décrite dans la [Remarque précédant la question 8](#remGagnantActuel). -->
 
 10. Supposons que pour un produit fixé, on ait une première offre **o1=(10,20)** (la notation signifie que **p<sub>o1</sub>=10** et **M<sub>o1</sub>=20**), avec un pas d'enchère de **2**. Imaginons que les offres ci-dessous sont ensuite, faites pour ce produit :
     * **o2=(11,25)**, avec enchérisseur différent de celui de **o1**
@@ -135,10 +140,10 @@ On rappelle qu'un utilisateur peut déposer une nouvelle offre d'enchère sur le
 
     Indiquez (sur papier) après chaque offre, quelle est l'offre actuellement gagnante, ainsi que le prix courant de l'objet.
 
-    11. Implémentez la méthode `void ajouterOffre(OffreEnchere o)` de la classe `Produit` qui, étant donné une nouvelle offre **o** (supposée valide, et pour le même produit), effectue les actions suivantes :
-        * ajoute **o** à la liste d'offres d'enchères du produit ;
-        * met à jour l'offre gagnante actuelle sur le produit (en déterminant si **o** est gagnante ou non, selon les règles ci-dessus) ;
-        * change correctement l'état des offres en concurrence en "gagnante" ou "perdante", tout en déclenchant le remboursement du compte perdant (utiliser la méthode `setEtatGagnant(boolean etat)`).
+11. Implémentez la méthode `void ajouterOffre(OffreEnchere o)` de la classe `Produit` qui, étant donné une nouvelle offre **o** (supposée valide, et pour le même produit), effectue les actions suivantes :
+    * ajoute **o** à la liste d'offres d'enchères du produit ;
+    * met à jour l'offre gagnante actuelle sur le produit (en déterminant si **o** est gagnante ou non, selon les règles ci-dessus) ;
+    * change correctement l'état des offres en concurrence en "gagnante" ou "perdante", tout en déclenchant le remboursement du compte perdant (utiliser la méthode `setEtatGagnant(boolean etat)`).
 
 **Remarque :** nul besoin de vérifier ici si l'offre est valide, à l'utilisation de la méthode `void ajouterOffre(OffreEnchere o)` on suppose l'offre  **o** comme étant valide.
 
@@ -156,7 +161,7 @@ Les enchères seront ouvertes et clôturées sur appel explicite de `demarrerEnc
 14. Écrivez la méthode `toString()` appropriée dans la classe `Produit`. Parmi les différentes offres déposées, seule l'offre gagnante actuelle devrait être affichée.
 
 
-15. Simulez votre application dans le programme principal (la classe `IBaille`). Pour cela, vous instancierez un produit et plusieurs comptes (3 au minimum). Pour chacun des comptes vous proposerez au client du logiciel (non-informaticien donc) de déposer des enchères pour ce produit en affichant les informations sur le produit et l'offre gagnante en cours.
+15. Simulez votre application dans le programme principal (la classe `IBaille`). Pour cela, vous instancierez un produit et plusieurs comptes (3 au minimum). Pour chacun des comptes vous proposerez à l'utilisateur du logiciel (non-informaticien donc) de déposer des enchères pour ce produit en affichant les informations sur le produit et l'offre gagnante en cours.
 
     Pour récupérer les données saisies par l'utilisateur à la console, vous pouvez vous servir de la classe `java.util.Scanner` qui permet de "parser" de manière intelligente une chaîne de caractères. Voici un petit exemple de ce que vous pouvez faire avec :
 
@@ -185,4 +190,6 @@ Les enchères seront ouvertes et clôturées sur appel explicite de `demarrerEnc
     Pour plus de détails sur cette classe, voir l'API : https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Scanner.html
 
 
-16. En fonction de votre réalisation, raffinez le modèle du diagramme de classes qui vous a été donné au début du sujet en y apportant les modifications nécessaires. **Rappel :** le code source PlantUML est dans le répertoire `ressources` de votre dépôt.
+16. En fonction de votre réalisation, raffinez le modèle du diagramme de classes qui vous a été donné au début du sujet en y apportant les modifications nécessaires.
+
+    **Rappel :** le code source PlantUML est dans le répertoire `ressources` de votre dépôt.
