@@ -145,9 +145,9 @@ Considérons un produit pour lequel arrive une nouvelle offre **o2** (supposée 
     * met à jour l'offre gagnante actuelle sur le produit (en déterminant si **o** est gagnante ou non, selon les règles ci-dessus) ;
     * change correctement l'état des offres en concurrence en "gagnante" ou "perdante", tout en déclenchant le remboursement du compte perdant (utiliser la méthode `setEtatGagnant(boolean etat)`).
 
-**Remarque :** nul besoin de vérifier ici si l'offre est valide, à l'utilisation de la méthode `void ajouterOffre(OffreEnchere o)` on suppose l'offre  **o** comme étant valide.
+    **Remarque :** nul besoin de vérifier ici si l'offre est valide, à l'utilisation de la méthode `void ajouterOffre(OffreEnchere o)` on suppose l'offre  **o** comme étant valide.
 
-**Remarque :** vous pouvez ajouter des méthodes auxiliaires qui vous paraissent nécessaires.
+    **Remarque :** vous pouvez ajouter des méthodes auxiliaires qui vous paraissent nécessaires.
 
 12. Implémentez la méthode `void arreterEnchere()`, qui rendra l'objet indisponible et invoquera le remboursement du compte lié à l'offre gagnante **o** de **M<sub>o</sub>** - **c**, où **c** est le prix courant de l'objet (qui correspond donc au prix auquel l'objet va partir au moment de la clôture). À la fin de cette fonction, le compte de l'offre gagnante devra avoir le bon solde et le produit remporté dans sa liste `produitsAchetés`.
 
