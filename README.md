@@ -61,9 +61,9 @@ Prenez le temps de lire le diagramme et le squelette de code, car vous aurez à 
 
 1. Implémentez la méthode `void demarrerEnchere()` de `Produit` pour qu'elle rende l'objet disponible.
 
-1. Quelque chose a été oublié dans la classe `Produit` : comme indiqué précédemment, le pas d'enchère doit être systématiquement le même pour tous les produits, mais modifiable par le client. Changez la déclaration de cet attribut afin de satisfaire cette contrainte. Doit-on modifier également les méthodes `void setPasEnchere()` et `int getPasEnchere()` ? Justifiez.
+1. Quelque chose a été oublié dans la classe `Produit` : comme indiqué précédemment, le pas d'enchère, qui sera toujours modifiable, doit être systématiquement le même pour tous les produits. Changez la déclaration de cet attribut afin de satisfaire cette contrainte. Doit-on modifier également les méthodes `void setPasEnchere()` et `int getPasEnchere()` ? Justifiez.
 
-   **Remarque** : ne pas confondre la notion de _client du site_ (non-informaticien) et le client de l'application (informaticien) qui va se servir de votre code pour poursuivre son développement, pour le maintenir, le débugger, etc. Dans ce cours le client, c'est l'informaticien.
+   **Remarque** : ne pas confondre la notion d'_utilisateur du logiciel_ (non-informaticien) et l'_utilisateur-programmeur_ qui utilise des classes existantes pour poursuivre son développement, sa maintenance, son débuggage, etc. On parle souvent de client pour désigner une classe invoquant un service proposé par une autre classe. Dans ce cours l'utilisateur représente généralement le programmeur d'un client, donc un informaticien.
 
 1. Complétez la classe `Compte` en y ajoutant une méthode qui permet de créditer le compte avec une somme donnée. Cette somme pourra éventuellement être négative, ce qui permettra alors de retirer de l'argent du compte.
 
