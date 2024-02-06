@@ -1,15 +1,19 @@
 package fr.umontpellier.iut.encheres;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Produit {
     private final int numero;
     private String description;
     private final int prixInitial;
-    private int pasEnchere;
+    private static int pasEnchere;
     private int coutParticipation;
 
     private boolean disponible;
+
+    private final ArrayList<OffreEnchere> offresEncheres;
+    private OffreEnchere offreGagnante;
 
     public Produit(int numero, String description, int prixInitial, int coutParticipation) {
         this.description = description;
@@ -17,6 +21,7 @@ public class Produit {
         this.coutParticipation = coutParticipation;
         this.numero = numero;
         disponible = false;
+        offresEncheres = new ArrayList<>();
     }
 
     public int getNumero() {
@@ -24,17 +29,17 @@ public class Produit {
     }
 
     // question 2
-    public int getPasEnchere() {
+    public static int getPasEnchere() {
         return pasEnchere;
     }
 
     // question 2
-    public void setPasEnchere(int pas) {
+    public static void setPasEnchere(int pas) {
         pasEnchere = pas;
     }
 
     public void demarrerEnchere() {
-        throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
+        disponible = true;
     }
 
     public void arreterEnchere() {
@@ -43,12 +48,34 @@ public class Produit {
 
     // question 5
     public int getPrixActuel(){
-        throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
+        return offreGagnante != null ? offreGagnante.getPrixEnCours() : prixInitial;
     }
 
     // pré-requis : l'offre passée en paramètre est valide
     public void ajouterOffre(OffreEnchere o) {
-        throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
+        offresEncheres.add(o);
+        if(offreGagnante != null) {
+            if(offreGagnante.getCompte().getPseudo() != o.getCompte().getPseudo()) {
+                if(offreGagnante.getPrixMax() >= o.getPrixMax())
+                    offreGagnante.setPrixEnCours(o.getPrixMax());
+                else {
+                    o.setPrixEnCours(Math.max(offreGagnante.getPrixMax(), o.getPrixEnCours()));
+                    offreGagnante.setEtatGagnant(false);
+                    offreGagnante = o;
+                }
+            } else {
+                if(offreGagnante.getPrixMax() >= o.getPrixMax()) {
+                    offreGagnante.setPrixMax(o.getPrixMax());
+                    offreGagnante.setPrixEnCours(o.getPrixEnCours());
+                } else {
+                    offreGagnante.setEtatGagnant(false);
+                    offreGagnante = o;
+                }
+            }
+        } else {
+            offreGagnante = o;
+            offreGagnante.setEtatGagnant(true);
+        }
     }
 
     public int getCoutParticipation() {
@@ -56,7 +83,7 @@ public class Produit {
     }
 
     public OffreEnchere getOffreGagnante() {
-        throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
+        return offreGagnante;
     }
 
     public boolean estDisponible() {
@@ -65,7 +92,9 @@ public class Produit {
 
     // vérifie si l'offre est correcte
     public boolean verifierOffre(OffreEnchere offre) {
-        throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
+        return disponible && equals(offre.getProduit())
+                && (offreGagnante == null ? offre.getPrixEnCours() >= prixInitial
+                    : offre.getPrixEnCours() >= offreGagnante.getPrixEnCours() + pasEnchere);
     }
 
 

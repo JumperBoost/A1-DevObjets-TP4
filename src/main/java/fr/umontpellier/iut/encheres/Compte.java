@@ -15,8 +15,16 @@ public class Compte {
         produitsAchetés = new ArrayList<>();
     }
 
+    public String getPseudo() {
+        return pseudo;
+    }
+
     public int getSolde() {
         return solde;
+    }
+
+    public void crediter(int montant) {
+        solde += montant;
     }
 
     /**
@@ -27,6 +35,14 @@ public class Compte {
      * @return l'offre d'enchère correspondante ou null si la création n'a pas pu avoir lieu
      */
     public OffreEnchere creerOffre(Produit produit, int prix, int prixMax) {
-        throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
+        OffreEnchere offre = new OffreEnchere(prix, prixMax, produit, this);
+        if((produit.getOffreGagnante() != null && produit.getOffreGagnante().getCompte().pseudo != pseudo) ? solde >= prixMax + produit.getCoutParticipation()
+                : solde + produit.getOffreGagnante().getPrixMax() >= prixMax + produit.getCoutParticipation()
+            && prixMax >= prix && produit.verifierOffre(offre)) {
+            solde -= prixMax + produit.getCoutParticipation();
+            mesEncheres.add(offre);
+            return offre;
+        }
+        return null;
     }
 }
