@@ -7,6 +7,9 @@ import java.util.Scanner;
 public class IBaille {
 
     public static void main(String[] args) {
+        if(args.length > 0)
+            return;
+
         Produit.setPasEnchere(500);
         Produit iPhone1 = new Produit(1, "Le 1er iPhone créé, délivré et signé par Steve Jobs lui-même, sous blister", 30000, 300);
         Compte tim = new Compte("Tim", 840750);

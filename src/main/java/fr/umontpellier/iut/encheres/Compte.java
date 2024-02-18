@@ -38,7 +38,7 @@ public class Compte {
         OffreEnchere offre = new OffreEnchere(prix, prixMax, produit, this);
         if((produit.getOffreGagnante() == null || (!produit.getOffreGagnante().hasMemeProprietaire(offre) ? solde >= prixMax + produit.getCoutParticipation()
                 : prixMax == produit.getOffreGagnante().getPrixMax() && solde + produit.getOffreGagnante().getPrixMax() >= prixMax + produit.getCoutParticipation()))
-            && prixMax >= prix && produit.verifierOffre(offre)) {
+            && solde >= prixMax + produit.getCoutParticipation() && prixMax >= prix && produit.verifierOffre(offre)) {
             solde -= prixMax + produit.getCoutParticipation();
             mesEncheres.add(offre);
             return offre;
