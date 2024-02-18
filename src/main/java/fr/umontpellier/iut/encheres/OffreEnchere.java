@@ -3,9 +3,9 @@ package fr.umontpellier.iut.encheres;
 public class OffreEnchere {
     private int prixEnCours;
     private int prixMax;
-    private Produit produit;
+    private final Produit produit;
     private boolean etatGagnant;
-    private Compte monCompte;
+    private final Compte monCompte;
 
     public OffreEnchere(int prixEnCours, int prixMax, Produit produit, Compte monCompte) {
         this.prixEnCours = prixEnCours;
@@ -53,7 +53,7 @@ public class OffreEnchere {
     public void finaliser() {
         if(etatGagnant) {
             monCompte.crediter(prixMax - prixEnCours);
-            monCompte.ajoutProduitAcheté(produit);
+            monCompte.ajouterProduit(produit);
         }
         monCompte.supprimerOffre(this);
     }

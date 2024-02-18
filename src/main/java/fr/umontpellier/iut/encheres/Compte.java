@@ -3,10 +3,10 @@ package fr.umontpellier.iut.encheres;
 import java.util.ArrayList;
 
 public class Compte {
-    private String pseudo;
+    private final String pseudo;
     private int solde;
-    private ArrayList<OffreEnchere> mesEncheres;
-    private ArrayList<Produit> produitsAchetés;
+    private final ArrayList<OffreEnchere> mesEncheres;
+    private final ArrayList<Produit> produitsAchetés;
 
     public Compte(String pseudo, int solde) {
         this.pseudo = pseudo;
@@ -50,7 +50,7 @@ public class Compte {
         mesEncheres.remove(offre);
     }
 
-    public void ajoutProduitAcheté(Produit produit) {
+    public void ajouterProduit(Produit produit) {
         produitsAchetés.add(produit);
     }
 

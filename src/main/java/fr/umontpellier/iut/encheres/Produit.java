@@ -5,10 +5,10 @@ import java.util.Objects;
 
 public class Produit {
     private final int numero;
-    private String description;
+    private final String description;
     private final int prixInitial;
     private static int pasEnchere;
-    private int coutParticipation;
+    private final int coutParticipation;
 
     private boolean disponible;
 
