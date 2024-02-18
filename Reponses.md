@@ -19,3 +19,8 @@
     - ``o6=(27,35)``, avec **o6** comme gagnant et un prix courant de **30**;
     - ``o7=(32,74)``, avec **o7** comme gagnant et un prix courant de **32**.
 11. ✅
+12. ✅
+13. ✅
+14. ✅
+15. ✅
+16. 

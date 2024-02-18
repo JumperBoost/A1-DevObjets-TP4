@@ -43,7 +43,10 @@ public class Produit {
     }
 
     public void arreterEnchere() {
-        throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
+        disponible = false;
+        for(OffreEnchere offre : offresEncheres) {
+            offre.finaliser();
+        }
     }
 
     // question 5
@@ -55,26 +58,30 @@ public class Produit {
     public void ajouterOffre(OffreEnchere o) {
         offresEncheres.add(o);
         if(offreGagnante != null) {
-            if(offreGagnante.getCompte().getPseudo() != o.getCompte().getPseudo()) {
-                if(offreGagnante.getPrixMax() >= o.getPrixMax())
+            if(!offreGagnante.hasMemeProprietaire(o)) {
+                if(offreGagnante.getPrixMax() >= o.getPrixMax()) {
                     offreGagnante.setPrixEnCours(o.getPrixMax());
-                else {
+                    o.setEtatGagnant(false);
+                } else {
                     o.setPrixEnCours(Math.max(offreGagnante.getPrixMax(), o.getPrixEnCours()));
                     offreGagnante.setEtatGagnant(false);
+                    o.setEtatGagnant(true);
                     offreGagnante = o;
                 }
             } else {
                 if(offreGagnante.getPrixMax() >= o.getPrixMax()) {
                     offreGagnante.setPrixMax(o.getPrixMax());
                     offreGagnante.setPrixEnCours(o.getPrixEnCours());
+                    o.setEtatGagnant(false);
                 } else {
                     offreGagnante.setEtatGagnant(false);
+                    o.setEtatGagnant(true);
                     offreGagnante = o;
                 }
             }
         } else {
+            o.setEtatGagnant(true);
             offreGagnante = o;
-            offreGagnante.setEtatGagnant(true);
         }
     }
 
@@ -92,7 +99,7 @@ public class Produit {
 
     // vérifie si l'offre est correcte
     public boolean verifierOffre(OffreEnchere offre) {
-        return disponible && equals(offre.getProduit())
+        return disponible && equals(offre.getProduit()) && offre.getPrixMax() >= offre.getPrixEnCours()
                 && (offreGagnante == null ? offre.getPrixEnCours() >= prixInitial
                     : offre.getPrixEnCours() >= offreGagnante.getPrixEnCours() + pasEnchere);
     }
@@ -105,6 +112,11 @@ public class Produit {
         if (this == o) return true;
         if (!(o instanceof Produit produit)) return false;
         return getNumero() == produit.getNumero();
+    }
+
+    public String toString() {
+        return "Produit{num=" + numero + ", desc='" + description + "', prixInitial=" + prixInitial + ", coutParticip=" +
+                coutParticipation + ", dispo=" + disponible + (offreGagnante != null ? ", gagnantInfo=" + offreGagnante.toString() : "") + "}";
     }
 
     // fonction auxiliaire définissant le hashCode des objets de type Produit en respectant le contrat de equals(Object o)

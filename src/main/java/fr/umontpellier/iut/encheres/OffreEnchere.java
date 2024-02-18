@@ -28,6 +28,7 @@ public class OffreEnchere {
     }
 
     public void setPrixMax(int prix) {
+        monCompte.crediter(prixMax - prix);
         prixMax = prix;
     }
 
@@ -35,22 +36,35 @@ public class OffreEnchere {
         return produit;
     }
 
+    public boolean hasMemeProprietaire(OffreEnchere offreEnchere) {
+        return monCompte.getPseudo().equals(offreEnchere.monCompte.getPseudo());
+    }
+
+    public boolean getEtatGagnant() {
+        return etatGagnant;
+    }
+
     public void setEtatGagnant(boolean etat) {
-        if(etatGagnant && !etat)
+        if(!etat)
             monCompte.crediter(prixMax);
         etatGagnant = etat;
     }
 
-    public Compte getCompte() {
-        return monCompte;
+    public void finaliser() {
+        if(etatGagnant) {
+            monCompte.crediter(prixMax - prixEnCours);
+            monCompte.ajoutProduitAcheté(produit);
+        }
+        monCompte.supprimerOffre(this);
     }
 
     @Override
     public String toString() {
         return "OffreEnchere{" +
-                ", prixEnCours=" + prixEnCours +
+                "prixEnCours=" + prixEnCours +
                 ", prixMax=" + prixMax +
                 ", produit=" + produit.getNumero() +
+                ", encherisseur=" + monCompte.getPseudo() +
                 ", est gagnante  ? -> " + etatGagnant +
                 '}';
     }
